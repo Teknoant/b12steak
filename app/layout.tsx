@@ -1,3 +1,1 @@
-import "./globals.css";
-export const metadata={title:"B12 Steak | Antalya",description:"B12 Steak - Kasap Ali Kuruluşudur."};
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="tr"><body><header><a className="brand" href="/">B12 STEAK</a><nav><a href="/">Ana Sayfa</a><a href="/menu">Menü</a></nav></header>{children}<footer><b>B12 Steak</b><span>© 2026 B12 Steak. Teknoant.com ile kurulmuştur.</span></footer></body></html>}
+import "./globals.css";export const metadata={title:"B12 Steak",description:"B12 Steak - Kasap Ali Kuruluşudur."};export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="tr"><body><header className="siteHeader"><a href="/" className="siteBrand">B12 Steak</a><nav><a href="/">Ana Sayfa</a><a href="/menu">Menu</a><span>More</span></nav></header>{children}<footer><span>B12 Steak</span><span>©2022, B12 Steak. Teknoant.com ile kurulmuştur.</span></footer></body></html>}

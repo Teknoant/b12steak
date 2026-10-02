@@ -1,5 +1,5 @@
 -- B12 Steak live Wix menu correction/additions - 2026-10-02
--- Re-runnable where practical. Adds missing alcoholic sections/items and corrects known variants.
+-- Idempotent live-menu correction pack. Safe to re-run after the base schema/seeds.
 do $$ declare cat bigint; sec bigint; itm bigint;
 begin
  select id into cat from public.menu_categories where slug='alkollu';
@@ -44,10 +44,10 @@ begin
    insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
    select sec,x.n,x.e,x.r,x.p,x.s,true from (values
     ('MILLER 33 CL','Miller','Miller',280::numeric,10),
-    ('EFES PİLSEN 50 CL','EFES PİLSEN','EFES PILSEN',290::numeric,20),
+    ('EFES PİLSEN 33 CL','EFES PİLSEN','EFES PILSEN',210::numeric,20),
     ('EFES MALT 50 CL','EFES MALT','EFES MALT',290::numeric,30),
     ('BOMONTİ FİLTRESİZ 50 CL','BOMONTİ FİLTRESİZ','BOMONTI UNFILTERED',300::numeric,40),
-    ('CORONA 35,5 CL','Corona','Corona',390::numeric,50)
+    ('CORONA 33 CL','Corona','Corona',390::numeric,50)
    ) x(n,e,r,p,s) where not exists(select 1 from public.menu_items i where i.section_id=sec and i.name_tr=x.n);
  end if;
 

@@ -1,1 +1,8 @@
-import "./globals.css";export const metadata={title:"B12 Steak",description:"B12 Steak - Kasap Ali Kuruluşudur."};export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="tr"><body><header className="siteHeader"><a href="/" className="siteBrand">B12 Steak</a><nav className="desktopNav"><a href="/">Ana Sayfa</a><a href="/menu">Menü</a><span className="langs"><a href="/">TR</a><a href="/en">EN</a><a href="/ru">RU</a></span></nav><details className="mobileNav"><summary>Menu</summary><div><a href="/">Ana Sayfa</a><a href="/menu">Menü</a><span className="langs"><a href="/">TR</a><a href="/en">EN</a><a href="/ru">RU</a></span></div></details></header>{children}<footer><span>B12 Steak</span><span>©2022, B12 Steak. Teknoant.com ile kurulmuştur.</span></footer></body></html>}
+import "./globals.css";
+import SiteHeader from "./site-header";
+
+export const metadata={title:"B12 Steak",description:"B12 Steak - Kasap Ali Kuruluşudur."};
+
+export default function RootLayout({children}:{children:React.ReactNode}){
+ return <html lang="tr"><body><SiteHeader/>{children}<footer><span>B12 Steak</span><span>©2022, B12 Steak. Teknoant.com ile kurulmuştur.</span></footer></body></html>;
+}

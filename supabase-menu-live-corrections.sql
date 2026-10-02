@@ -1,0 +1,67 @@
+-- B12 Steak live Wix menu correction/additions - 2026-10-02
+-- Re-runnable where practical. Adds missing alcoholic sections/items and corrects known variants.
+do $$ declare cat bigint; sec bigint; itm bigint;
+begin
+ select id into cat from public.menu_categories where slug='alkollu';
+ if cat is null then return; end if;
+
+ -- Missing sections
+ insert into public.menu_sections(category_id,title_tr,title_en,title_ru,sort_order,is_active)
+ select cat,'Bira','Beers','Пиво',50,true where not exists(select 1 from public.menu_sections where category_id=cat and title_tr='Bira');
+ insert into public.menu_sections(category_id,title_tr,title_en,title_ru,sort_order,is_active)
+ select cat,'Rakı','Raki','Ракы',60,true where not exists(select 1 from public.menu_sections where category_id=cat and title_tr='Rakı');
+
+ -- Complete LIQUOR & VERMOUTH
+ select id into sec from public.menu_sections where category_id=cat and title_tr='LIQUOR & VERMOUTH' limit 1;
+ if sec is not null then
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,'Jagermeister','Jagermeister','Jagermeister',0,30,true where not exists(select 1 from public.menu_items where section_id=sec and name_tr='Jagermeister');
+   select id into itm from public.menu_items where section_id=sec and name_tr='Jagermeister' limit 1;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Shot 5 CL','Shot 5 CL','Шот 5 CL',280,10,true where not exists(select 1 from public.menu_item_variants where item_id=itm);
+
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,'Grappa','Grappa','Граппа',0,40,true where not exists(select 1 from public.menu_items where section_id=sec and name_tr='Grappa');
+   select id into itm from public.menu_items where section_id=sec and name_tr='Grappa' limit 1;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Shot 5 CL','Shot 5 CL','Шот 5 CL',240,10,true where not exists(select 1 from public.menu_item_variants where item_id=itm);
+
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,'Limoncello','Lemonchello','Лимончелло',0,50,true where not exists(select 1 from public.menu_items where section_id=sec and name_tr='Limoncello');
+   select id into itm from public.menu_items where section_id=sec and name_tr='Limoncello' limit 1;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Shot 5 CL','Shot 5 CL','Шот 5 CL',240,10,true where not exists(select 1 from public.menu_item_variants where item_id=itm);
+
+   select id into itm from public.menu_items where section_id=sec and name_tr='Baileys' limit 1;
+   if itm is not null and not exists(select 1 from public.menu_item_variants where item_id=itm) then
+     insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Shot 5 CL','Shot 5 CL','Шот 5 CL',240,10,true);
+   end if;
+ end if;
+
+ -- Beers
+ select id into sec from public.menu_sections where category_id=cat and title_tr='Bira' limit 1;
+ if sec is not null then
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,x.n,x.e,x.r,x.p,x.s,true from (values
+    ('MILLER 33 CL','Miller','Miller',280::numeric,10),
+    ('EFES PİLSEN 50 CL','EFES PİLSEN','EFES PILSEN',290::numeric,20),
+    ('EFES MALT 50 CL','EFES MALT','EFES MALT',290::numeric,30),
+    ('BOMONTİ FİLTRESİZ 50 CL','BOMONTİ FİLTRESİZ','BOMONTI UNFILTERED',300::numeric,40),
+    ('CORONA 35,5 CL','Corona','Corona',390::numeric,50)
+   ) x(n,e,r,p,s) where not exists(select 1 from public.menu_items i where i.section_id=sec and i.name_tr=x.n);
+ end if;
+
+ -- Rakı: add confirmed product shell; detailed sizes can be completed from live source/admin.
+ select id into sec from public.menu_sections where category_id=cat and title_tr='Rakı' limit 1;
+ if sec is not null then
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,'BEYLERBEYİ GÖBEK','BEYLERBEYİ GÖBEK','BEYLERBEYİ GÖBEK',0,10,true where not exists(select 1 from public.menu_items where section_id=sec and name_tr='BEYLERBEYİ GÖBEK');
+   select id into itm from public.menu_items where section_id=sec and name_tr='BEYLERBEYİ GÖBEK' limit 1;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,x.t,x.e,x.r,x.p,x.s,true from (values
+    ('4 CL','4 CL','4 CL',370::numeric,10),
+    ('8 CL','8 CL','8 CL',520::numeric,20),
+    ('20 CL','20 CL','20 CL',1400::numeric,30)
+   ) x(t,e,r,p,s) where not exists(select 1 from public.menu_item_variants v where v.item_id=itm and v.label_tr=x.t);
+ end if;
+end $$;

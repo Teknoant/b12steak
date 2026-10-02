@@ -105,3 +105,27 @@ update public.menu_item_variants v set
 where v.item_id in (
  select i.id from public.menu_items i join public.menu_sections s on s.id=i.section_id join public.menu_categories c on c.id=s.category_id where c.slug='viski'
 );
+
+-- Normalize soft-drink sizes as variants
+do $$ declare itm bigint;
+begin
+ select id into itm from public.menu_items where name_tr='Şalgam Suyu 330 ml' limit 1;
+ if itm is not null then
+   update public.menu_items set price=0,description_tr='Şalgam Suyu',name_en=coalesce(name_en,'Turnip Juice'),name_ru=coalesce(name_ru,'Шалгам') where id=itm;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,x.t,x.e,x.r,x.p,x.s,true from (values
+    ('330 ML','330 ML','330 МЛ',80::numeric,10),
+    ('1 LT','1 L','1 Л',220::numeric,20)
+   ) x(t,e,r,p,s) where not exists(select 1 from public.menu_item_variants v where v.item_id=itm and v.label_tr=x.t);
+ end if;
+
+ select id into itm from public.menu_items where name_tr='Uludağ Soda' limit 1;
+ if itm is not null then
+   update public.menu_items set price=0,name_en=coalesce(name_en,'Uludağ Mineral Water'),name_ru=coalesce(name_ru,'Минеральная вода Uludağ') where id=itm;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,x.t,x.e,x.r,x.p,x.s,true from (values
+    ('250 ML','250 ML','250 МЛ',90::numeric,10),
+    ('750 ML','750 ML','750 МЛ',195::numeric,20)
+   ) x(t,e,r,p,s) where not exists(select 1 from public.menu_item_variants v where v.item_id=itm and replace(upper(v.label_tr),' ','')=replace(upper(x.t),' ',''));
+ end if;
+end $$;

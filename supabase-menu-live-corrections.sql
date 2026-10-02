@@ -166,3 +166,42 @@ begin
    where not exists(select 1 from public.menu_items where section_id=sec and name_tr=rec.n);
  end loop;
 end $$;
+
+
+-- Complete imported wines missing from the original seed, verified against live Wix menu 2026-10-02
+do $$ declare cat bigint; sec bigint; itm bigint; rec record;
+begin
+ select id into cat from public.menu_categories where slug='sarap';
+ if cat is null then return; end if;
+ select id into sec from public.menu_sections where category_id=cat and title_tr='İthal' limit 1;
+ if sec is null then return; end if;
+
+ for rec in select * from (values
+  ('Şili / Casabalnca Valley Montes, Merlot',null,2600::numeric,20),
+  ('İtalya / Docg, Chanti LA Terre',null,1750::numeric,30),
+  ('Fransa / Aoc, Bourgogne, Jaffelin Pinot Noir',null,2450::numeric,40),
+  ('Şili / Casabalnca Valley Montes, Cabernet Sauvignon',null,2600::numeric,50),
+  ('Maison Kavaklıdere / La Croix Lortique',null,4400::numeric,60),
+  ('Maison Kavaklıdere / La Folie',null,2400::numeric,70),
+  ('Muga Reserva','Tempranillo Garnacha (Grenache), Mazuelo ve Graciano',3900::numeric,80),
+  ('Marchesi Di Barolo & Serrragilli Barbaresco','Nebbiolo',6200::numeric,90),
+  ('Tomassi Amarone Della Valpolicella Classico','Corvina Corvinone Rondinella Oseleta',6200::numeric,100)
+ ) x(n,d,p,s)
+ loop
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,description_tr,price,sort_order,is_active)
+   select sec,rec.n,rec.n,rec.n,rec.d,rec.p,rec.s,true
+   where not exists(select 1 from public.menu_items where section_id=sec and name_tr=rec.n);
+ end loop;
+
+ select id into itm from public.menu_items where section_id=sec and name_tr='İtalya / Docg, Chanti LA Terre' limit 1;
+ if itm is not null then
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Kadeh','Glass','Бокал',380,10,true
+   where not exists(select 1 from public.menu_item_variants where item_id=itm and label_tr='Kadeh');
+ end if;
+
+ -- Wix currently shows the Köpüklü heading with no listed products.
+ insert into public.menu_sections(category_id,title_tr,title_en,title_ru,sort_order,is_active)
+ select cat,'Köpüklü','Sparkling','Игристое',50,true
+ where not exists(select 1 from public.menu_sections where category_id=cat and title_tr='Köpüklü');
+end $$;

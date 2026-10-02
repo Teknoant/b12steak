@@ -205,3 +205,33 @@ begin
  select cat,'Köpüklü','Sparkling','Игристое',50,true
  where not exists(select 1 from public.menu_sections where category_id=cat and title_tr='Köpüklü');
 end $$;
+
+
+-- Correct live alcoholic prices/sizes verified against Wix on 2026-10-02
+do $$ declare itm bigint;
+begin
+ select id into itm from public.menu_items where name_tr='Absolut' limit 1;
+ if itm is not null then
+   update public.menu_item_variants set price=220 where item_id=itm and (upper(label_tr) like 'SHOT%' or upper(label_tr) like 'TEK%');
+   update public.menu_item_variants set price=380 where item_id=itm and (upper(label_tr) like 'DUBLE%' or upper(coalesce(label_en,'')) like 'DOUBLE%');
+   update public.menu_item_variants set price=2400 where item_id=itm and (upper(label_tr) like 'ŞİŞE%' or upper(coalesce(label_en,''))='BOTTLE');
+ end if;
+
+ select id into itm from public.menu_items where name_tr='Gordon''s' limit 1;
+ if itm is not null then
+   update public.menu_item_variants set price=200 where item_id=itm and (upper(label_tr) like 'SHOT%' or upper(label_tr) like 'TEK%');
+   update public.menu_item_variants set price=360 where item_id=itm and (upper(label_tr) like 'DUBLE%' or upper(coalesce(label_en,'')) like 'DOUBLE%');
+   update public.menu_item_variants set price=2400 where item_id=itm and (upper(label_tr) like 'ŞİŞE%' or upper(coalesce(label_en,''))='BOTTLE');
+ end if;
+
+ -- EFES PİLSEN is 33 CL bottle / 210 TL on the current Wix menu.
+ update public.menu_items
+ set name_tr='EFES PİLSEN 33 CL',name_en='EFES PİLSEN',name_ru='EFES PILSEN',price=210
+ where name_tr in ('EFES PİLSEN 50 CL','EFES PİLSEN 33 CL');
+
+ -- Keep current live beer names/sizes normalized.
+ update public.menu_items set name_tr='MILLER 33 CL',price=280 where name_tr in ('MILLER 33 CL','Miller');
+ update public.menu_items set name_tr='EFES MALT 50 CL',price=290 where name_tr='EFES MALT 50 CL';
+ update public.menu_items set name_tr='BOMONTİ FİLTRESİZ 50 CL',price=300 where name_tr='BOMONTİ FİLTRESİZ 50 CL';
+ update public.menu_items set name_tr='CORONA 33 CL',price=390 where name_tr in ('CORONA 35,5 CL','CORONA 33 CL');
+end $$;

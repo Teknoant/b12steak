@@ -129,3 +129,40 @@ begin
    ) x(t,e,r,p,s) where not exists(select 1 from public.menu_item_variants v where v.item_id=itm and replace(upper(v.label_tr),' ','')=replace(upper(x.t),' ',''));
  end if;
 end $$;
+
+
+-- Complete remaining Rakı products verified against live Wix menu on 2026-10-02
+do $$ declare cat bigint; sec bigint; itm bigint; rec record;
+begin
+ select id into cat from public.menu_categories where slug='alkollu';
+ select id into sec from public.menu_sections where category_id=cat and title_tr='Rakı' limit 1;
+ if sec is null then return; end if;
+
+ for rec in select * from (values
+  ('BEYLERBEYİ TERRA GOLD',1800::numeric,3200::numeric,80),
+  ('BEYLERBEYİ MAVİ',1750::numeric,3000::numeric,90),
+  ('KLÜP RAKI',2000::numeric,3400::numeric,100)
+ ) x(n,p35,p70,s)
+ loop
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,rec.n,rec.n,rec.n,0,rec.s,true
+   where not exists(select 1 from public.menu_items where section_id=sec and name_tr=rec.n);
+   select id into itm from public.menu_items where section_id=sec and name_tr=rec.n limit 1;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'35 CL','35 CL','35 CL',rec.p35,10,true
+   where not exists(select 1 from public.menu_item_variants where item_id=itm and label_tr='35 CL');
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'70 CL','70 CL','70 CL',rec.p70,20,true
+   where not exists(select 1 from public.menu_item_variants where item_id=itm and label_tr='70 CL');
+ end loop;
+
+ for rec in select * from (values
+  ('SARI ZEYBEK 3 MEŞE 70 CL',4300::numeric,110),
+  ('MERCAN 70 CL',3500::numeric,120)
+ ) x(n,p,s)
+ loop
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,rec.n,rec.n,rec.n,rec.p,rec.s,true
+   where not exists(select 1 from public.menu_items where section_id=sec and name_tr=rec.n);
+ end loop;
+end $$;

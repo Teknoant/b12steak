@@ -313,3 +313,41 @@ begin
    where not exists(select 1 from public.menu_items where section_id=sec and name_tr='Sartori Pinot Grigio');
  end if;
 end $$;
+
+
+-- Wine variants verified against live Wix - 2026-10-03
+do $$ declare itm bigint;
+begin
+ -- Ancyra Narince: bottle 1800 + glass 380
+ select mi.id into itm from public.menu_items mi join public.menu_sections ms on ms.id=mi.section_id
+ join public.menu_categories mc on mc.id=ms.category_id
+ where mc.slug='sarap' and mi.name_tr='Kavaklıdere / Ancyra Narince' limit 1;
+ if itm is not null then
+   update public.menu_items set price=1800 where id=itm;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Kadeh','Glass','Бокал',380,10,true
+   where not exists(select 1 from public.menu_item_variants where item_id=itm and lower(label_tr)='kadeh');
+ end if;
+
+ -- Ancyra Blush: bottle 1800 + glass 380
+ select mi.id into itm from public.menu_items mi join public.menu_sections ms on ms.id=mi.section_id
+ join public.menu_categories mc on mc.id=ms.category_id
+ where mc.slug='sarap' and mi.name_tr='Kavaklıdere / Ancyra Blush' limit 1;
+ if itm is not null then
+   update public.menu_items set price=1800 where id=itm;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Kadeh','Glass','Бокал',380,10,true
+   where not exists(select 1 from public.menu_item_variants where item_id=itm and lower(label_tr)='kadeh');
+ end if;
+
+ -- Suvla Öküzgözü/Boğazkere: bottle 1750 + glass 380
+ select mi.id into itm from public.menu_items mi join public.menu_sections ms on ms.id=mi.section_id
+ join public.menu_categories mc on mc.id=ms.category_id
+ where mc.slug='sarap' and mi.name_tr='Suvla / ÖküzGözü/Boğazkere' limit 1;
+ if itm is not null then
+   update public.menu_items set price=1750 where id=itm;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active)
+   select itm,'Kadeh','Glass','Бокал',380,10,true
+   where not exists(select 1 from public.menu_item_variants where item_id=itm and lower(label_tr)='kadeh');
+ end if;
+end $$;

@@ -235,3 +235,52 @@ begin
  update public.menu_items set name_tr='BOMONTİ FİLTRESİZ 50 CL',price=300 where name_tr='BOMONTİ FİLTRESİZ 50 CL';
  update public.menu_items set name_tr='CORONA 33 CL',price=390 where name_tr in ('CORONA 35,5 CL','CORONA 33 CL');
 end $$;
+
+
+-- Wix-reference normalization: alcoholic menu labels and missing items/images review 2026-10-03
+do $$ declare itm bigint;
+begin
+  -- Keep Wix Turkish display names exact.
+  update public.menu_items set name_tr='Olmeca' where lower(name_tr)='olmeca';
+  update public.menu_items set name_tr='Smirnoff Red' where lower(name_tr)='smirnoff red';
+  update public.menu_items set name_tr='Absolut' where lower(name_tr)='absolut';
+  update public.menu_items set name_tr='Belvedere' where lower(name_tr)='belvedere';
+  update public.menu_items set name_tr='Beefeater' where lower(name_tr)='beefeater';
+  update public.menu_items set name_tr='Gordon''s' where lower(name_tr)='gordon''s';
+  update public.menu_items set name_tr='Campari' where lower(name_tr)='campari';
+  update public.menu_items set name_tr='Baileys' where lower(name_tr)='baileys';
+  update public.menu_items set name_tr='Jagermeister' where lower(name_tr)='jagermeister';
+  update public.menu_items set name_tr='Grappa' where lower(name_tr)='grappa';
+  update public.menu_items set name_tr='Limoncello' where lower(name_tr)='limoncello';
+
+  -- Wix uses Shot / Duble / Şişe wording in Turkish alcoholic menu.
+  update public.menu_item_variants v set label_tr='Shot 5 CL'
+  where v.item_id in (select i.id from public.menu_items i join public.menu_sections s on s.id=i.section_id join public.menu_categories c on c.id=s.category_id where c.slug='alkollu')
+    and (upper(v.label_tr) like 'TEK%' or upper(v.label_tr) like 'SHOT%');
+  update public.menu_item_variants v set label_tr='Duble 10 CL'
+  where v.item_id in (select i.id from public.menu_items i join public.menu_sections s on s.id=i.section_id join public.menu_categories c on c.id=s.category_id where c.slug='alkollu')
+    and (upper(v.label_tr) like 'DUBLE%' or upper(coalesce(v.label_en,'')) like 'DOUBLE%');
+  update public.menu_item_variants v set label_tr='Şişe'
+  where v.item_id in (select i.id from public.menu_items i join public.menu_sections s on s.id=i.section_id join public.menu_categories c on c.id=s.category_id where c.slug='alkollu')
+    and (upper(v.label_tr) like 'ŞİŞE%' or upper(coalesce(v.label_en,''))='BOTTLE');
+
+  -- Exact Wix values visible in the current reference.
+  select id into itm from public.menu_items where name_tr='Absolut' limit 1;
+  if itm is not null then
+    update public.menu_item_variants set price=220 where item_id=itm and upper(label_tr)='SHOT 5 CL';
+    update public.menu_item_variants set price=380 where item_id=itm and upper(label_tr)='DUBLE 10 CL';
+    update public.menu_item_variants set price=2400 where item_id=itm and label_tr='Şişe';
+  end if;
+
+  -- Rakı labels exactly as Wix reference.
+  update public.menu_items set name_tr='BEYLERBEYİ GÖBEK' where name_tr in ('BEYLER BEYİ GÖBEK','BEYLERBEYİ GÖBEK');
+  update public.menu_items set name_tr='YENİ RAKI' where name_tr='YENİ RAKI';
+  update public.menu_items set name_tr='YENİ RAKI- YENİ SERİ' where name_tr in ('YENİ RAKI - YENİ SERİ','YENİ RAKI- YENİ SERİ');
+  update public.menu_items set name_tr='YENİ RAKI- ALA' where name_tr in ('YENİ RAKI - ALA','YENİ RAKI- ALA');
+  update public.menu_items set name_tr='TEKİRDAĞ RAKISI' where name_tr='TEKİRDAĞ RAKISI';
+  update public.menu_items set name_tr='TEKİRDAĞ RAKISI GOLD' where name_tr='TEKİRDAĞ RAKISI GOLD';
+  update public.menu_items set name_tr='GOLD EFE RAKI' where name_tr='GOLD EFE RAKI';
+  update public.menu_items set name_tr='BEYLERBEYİ TERRA GOLD' where name_tr='BEYLERBEYİ TERRA GOLD';
+  update public.menu_items set name_tr='BEYLERBEYİ MAVİ' where name_tr='BEYLERBEYİ MAVİ';
+  update public.menu_items set name_tr='KLÜP RAKI' where name_tr='KLÜP RAKI';
+end $$;

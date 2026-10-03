@@ -96,7 +96,7 @@ const localImage=(name:string)=>{
   "marchesi di barolo & serrragilli barbaresco":"/images/menu/sarap/serragrilli-barbaresco.webp",
   "tomassi amarone della valpolicella classico":"/images/menu/sarap/Tommasi-Amarone-Classico-Since1902.webp"
  };
- return images[n]||null;
+ return images[n]||Object.entries(images).find(([key])=>imageKey(key)===n)?.[1]||null;
 };
 const itemImage=(i:Item)=>i.image_path?process.env.NEXT_PUBLIC_SUPABASE_URL+"/storage/v1/object/public/menu-images/"+i.image_path:localImage(i.name_tr);
 const money=(v:number)=>new Intl.NumberFormat("tr-TR",{style:"currency",currency:"TRY",maximumFractionDigits:0}).format(Number(v));

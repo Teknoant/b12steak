@@ -3,14 +3,14 @@ export default function RussianHome() {
     <main className="wixHome">
       <section className="wixHero">
         <div className="heroCollage">
-          <img src="https://static.wixstatic.com/media/5f9784_66eacfb7caec4c2185580ad77c2311d7~mv2.jpg" alt="Dallas" />
-          <img src="https://static.wixstatic.com/media/5f9784_fd4ab6de608b4ab487ee63d182ecf417~mv2.jpg" alt="Салат Tulum" />
-          <img src="https://static.wixstatic.com/media/5f9784_cf0801d314f244ddbad2524e044865f9~mv2.jpg" alt="Говяжья вырезка" />
+          <img src="/images/menu/ana-yemek/dry-aged/Dallas.webp" alt="Dallas" />
+          <img src="/images/menu/salatalar/tulumsalata.webp" alt="Салат Tulum" />
+          <img src="/images/menu/ana-yemek/beef/Bonfile-Lokum.webp" alt="Говяжья вырезка" />
         </div>
         <div className="heroTitle"><h1>B12 STEAK</h1><p>Основано Kasap Ali.</p></div>
       </section>
       <section className="aboutWix">
-        <img className="b12Logo" src="https://static.wixstatic.com/media/5f9784_0bc97f4dbfb14ca1bc25ae59956592ac~mv2.png" alt="B12 Steak" />
+        <img className="b12Logo" src="/images/site/logo/b12logo.webp" alt="B12 Steak" />
         <div>
           <h2>О НАС</h2>
           <p>Али Юзюлдю, создатель брендов Kasap Ali и B12, начал свою профессию в 1993 году в Кахраманмараше учеником мясника. Предпринимательский путь, начавшийся в 2012 году с бренда Kasap Ali, продолжился созданием собственной животноводческой фермы в 2016 году, а затем рестораном B12 Steak.</p>

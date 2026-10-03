@@ -54,7 +54,8 @@ const localImage=(name:string)=>{
   "s.pellegrino":"/images/menu/soft/St.Pellegrino.webp",
   "soda":"/images/menu/soft/Soda.webp",
   "uludağ soda":"/images/menu/soft/uludag.webp",
-  "tiramisu":"/images/menu/tatli/Tiramisu.webp",
+  "tiramisu":"/images/menu/tatli/Tiramisu-edited.webp",
+  "katmer":"https://static.wixstatic.com/media/5f9784_8f93e9d1db7548a985289c88782a14cf~mv2.jpg",
   "cheddar fume":"/images/menu/sicak/cheddar-f├╝me.webp",
   "spagetti 200 gr":"/images/menu/sicak/spaketti.webp",
   "kasap kofte":"/images/menu/kofte/kasap-k├Âfte-edited.webp"

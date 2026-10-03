@@ -70,7 +70,10 @@ const localImage=(name:string)=>{
   "fransa / aoc, bourgogne, jaffelin pinot noir":"/images/menu/sarap/jaffelin-vin-de-france-pinot-noir-scaled-510x631.webp",
   "muga reserva":"/images/menu/sarap/muga.webp",
   "marchesi di barolo & serrragilli barbaresco":"/images/menu/sarap/serragrilli-barbaresco.webp",
-  "tomassi amarone della valpolicella classico":"/images/menu/sarap/Tommasi-Amarone-Classico-Since1902.webp"
+  "tomassi amarone della valpolicella classico":"/images/menu/sarap/Tommasi-Amarone-Classico-Since1902.webp",
+  "suvla / chardonnay":"/images/menu/sarap/SUVLA.webp",
+  "suvla sauvignon blanc & semillon":"/images/menu/sarap/SUVLA.webp",
+  "sartori pinot grigio":"/images/menu/sarap/BLUS.webp"
  };return images[n]||Object.entries(images).find(([key])=>imageKey(key)===n)?.[1]||null;
 };
 const itemImage=(i:I)=>i.image_path?process.env.NEXT_PUBLIC_SUPABASE_URL+"/storage/v1/object/public/menu-images/"+i.image_path:localImage(i.name_tr);

@@ -284,3 +284,32 @@ begin
   update public.menu_items set name_tr='BEYLERBEYİ MAVİ' where name_tr='BEYLERBEYİ MAVİ';
   update public.menu_items set name_tr='KLÜP RAKI' where name_tr='KLÜP RAKI';
 end $$;
+
+
+-- Complete wine list against live Wix reference - 2026-10-03
+do $$ declare cat bigint; sec bigint;
+begin
+ select id into cat from public.menu_categories where slug='sarap';
+ if cat is null then return; end if;
+
+ select id into sec from public.menu_sections where category_id=cat and title_tr='Kırmızı' limit 1;
+ if sec is not null then
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,'Selection / Öküzgözü-Bogazkere','Selection / Öküzgözü-Bogazkere','Selection / Öküzgözü-Bogazkere',3800,70,true
+   where not exists(select 1 from public.menu_items where section_id=sec and name_tr='Selection / Öküzgözü-Bogazkere');
+   update public.menu_items set price=1850 where section_id=sec and name_tr='Suvla / Cabarnet Sauvignon-Merlot';
+   update public.menu_items set price=1750 where section_id=sec and name_tr='Suvla / ÖküzGözü/Boğazkere';
+   update public.menu_items set price=3900 where section_id=sec and name_tr='Kavaklıdere / Egeo Merlot';
+   update public.menu_items set price=3900 where section_id=sec and name_tr='Kavaklıdere / Egeo Cabernet Sauvignon';
+   update public.menu_items set price=3700 where section_id=sec and name_tr='Kavaklıdere / Egeo Syrah';
+   update public.menu_items set price=4900 where section_id=sec and name_tr='Kavaklıdere / Prestige Kalecik Karası';
+   update public.menu_items set price=4900 where section_id=sec and name_tr='Kavaklıdere / Pendore Syrah';
+ end if;
+
+ select id into sec from public.menu_sections where category_id=cat and title_tr='Rose' limit 1;
+ if sec is not null then
+   insert into public.menu_items(section_id,name_tr,name_en,name_ru,price,sort_order,is_active)
+   select sec,'Sartori Pinot Grigio','Sartori Pinot Grigio','Sartori Pinot Grigio',2050,10,true
+   where not exists(select 1 from public.menu_items where section_id=sec and name_tr='Sartori Pinot Grigio');
+ end if;
+end $$;

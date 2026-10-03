@@ -23,7 +23,8 @@ const localImage=(name:string)=>{
 "fuse tea":"https://static.wixstatic.com/media/5f9784_7ade8b1189da4c89a533b969f62277e5~mv2.png",
 "redbull":"https://static.wixstatic.com/media/5f9784_27f512ad91ab472f8cce4141cc3d9392~mv2.jpg",
 "taze portakal suyu":"https://static.wixstatic.com/media/5f9784_283b065481f6438c918a79566465c4ad~mv2.png",
-"s.pellegrino":"/images/menu/soft/St.Pellegrino.webp","soda":"/images/menu/soft/Soda.webp","uludağ soda":"/images/menu/soft/uludag.webp","tiramisu":"/images/menu/tatli/Tiramisu.webp",
+"s.pellegrino":"/images/menu/soft/St.Pellegrino.webp","soda":"/images/menu/soft/Soda.webp","uludağ soda":"/images/menu/soft/uludag.webp","tiramisu":"/images/menu/tatli/Tiramisu-edited.webp",
+  "katmer":"https://static.wixstatic.com/media/5f9784_8f93e9d1db7548a985289c88782a14cf~mv2.jpg",
   "cheddar fume":"/images/menu/sicak/cheddar-f├╝me.webp",
   "spagetti 200 gr":"/images/menu/sicak/spaketti.webp",
   "kasap kofte":"/images/menu/kofte/kasap-k├Âfte-edited.webp"

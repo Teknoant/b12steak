@@ -165,3 +165,16 @@ body{background:#fff}
  .dishCopy>p{font-size:11px}
  .dishPrice,.dishPrice>strong{font-size:12px}
 }
+
+
+/* Stable QR-menu media column */
+.dishMedia{width:92px;min-width:92px;height:92px}
+.dishMedia .menuItemImage{display:block;width:92px;height:92px;margin:0}
+@media(max-width:700px){
+ .dishMedia{width:96px;min-width:96px;height:96px}
+ .dishMedia .menuItemImage{width:96px;height:96px}
+}
+@media(max-width:390px){
+ .dishMedia{width:82px;min-width:82px;height:82px}
+ .dishMedia .menuItemImage{width:82px;height:82px}
+}

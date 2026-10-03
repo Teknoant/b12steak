@@ -473,3 +473,78 @@ begin
    end if;
  end loop;
 end $$;
+
+
+-- FULL WIX MENU AUDIT corrections - 2026-10-03
+do $$
+declare itm bigint;
+begin
+ -- Soft: current Wix names/base prices.
+ update public.menu_items set price=80 where name_tr='SU';
+ update public.menu_items set price=380 where name_tr='S.Pellegrino';
+ update public.menu_items set price=80 where name_tr='Soda';
+ update public.menu_items set price=80 where name_tr='Şalgam Suyu 330 ml';
+ update public.menu_items set price=90 where name_tr='Ayran';
+ update public.menu_items set price=125 where name_tr='Sprite';
+ update public.menu_items set price=125 where name_tr='COCA COLA';
+ update public.menu_items set price=125 where name_tr='Fanta';
+ update public.menu_items set price=130 where name_tr='Cappy Meyve Suyu';
+ update public.menu_items set price=130 where name_tr='FUSE TEA';
+ update public.menu_items set price=190 where name_tr='Redbull';
+ update public.menu_items set price=190 where name_tr='Taze Portakal Suyu';
+ update public.menu_items set price=90 where name_tr='Uludağ Soda';
+ select id into itm from public.menu_items where name_tr='Uludağ Soda' limit 1;
+ if itm is not null then
+   delete from public.menu_item_variants where item_id=itm;
+   insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values
+   (itm,'250ML','250ML','250ML',90,10,true),(itm,'750ML','750ML','750ML',195,20,true);
+ end if;
+
+ -- Desserts.
+ update public.menu_items set price=310 where name_tr='Tiramisu';
+ update public.menu_items set price=950 where name_tr='Katmer';
+
+ -- Alcohol current Wix spelling/prices.
+ update public.menu_items set name_tr='EFES PİLSEN 50 CL',price=290 where name_tr in ('EFES PİLSEN 33 CL','EFES PİLSEN 50 CL');
+ update public.menu_items set name_tr='CORONA 35,5 CL',price=390 where name_tr in ('CORONA 33 CL','CORONA 35,5 CL');
+ update public.menu_items set price=280 where name_tr='MILLER 33 CL';
+ update public.menu_items set price=290 where name_tr='EFES MALT 50 CL';
+ update public.menu_items set price=300 where name_tr='BOMONTİ FİLTRESİZ 50 CL';
+
+ -- Rebuild exact Wix variants for named spirits.
+ for itm in select id from public.menu_items where name_tr in ('Olmeca','Smirnoff Red','Absolut','Belvedere','Beefeater','Gordon''s','Campari','Baileys','Jagermeister','Grappa','Limoncello') loop
+   delete from public.menu_item_variants where item_id=itm;
+ end loop;
+ select id into itm from public.menu_items where name_tr='Olmeca' limit 1;
+ if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values (itm,'Shot (5 CL)','Shot (5 CL)','Shot (5 CL)',225,10,true),(itm,'Şişe','Bottle','Бутылка',3000,20,true); end if;
+ select id into itm from public.menu_items where name_tr='Smirnoff Red' limit 1;
+ if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values (itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',250,10,true),(itm,'Dubne 10 CL','Double 10 CL','Двойной 10 CL',500,20,true),(itm,'Şişe','Bottle','Бутылка',3200,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Absolut' limit 1;
+ if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values (itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',250,10,true),(itm,'Duble 10 CL','Double 10 CL','Двойной 10 CL',500,20,true),(itm,'Şişe','Bottle','Бутылка',3200,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Belvedere' limit 1;
+ if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values (itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',500,10,true),(itm,'Duble 10 CL','Double 10 CL','Двойной 10 CL',1000,20,true),(itm,'Şişe','Bottle','Бутылка',6000,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Beefeater' limit 1;
+ if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values (itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',275,10,true),(itm,'Duble 10 CL','Double 10 CL','Двойной 10 CL',550,20,true),(itm,'Şişe','Bottle','Бутылка',3300,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Gordon''s' limit 1;
+ if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values (itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',275,10,true),(itm,'Duble 10 CL','Double 10 CL','Двойной 10 CL',550,20,true),(itm,'Şişe','Bottle','Бутылка',3300,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Campari' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',240,10,true); end if;
+ select id into itm from public.menu_items where name_tr='Baileys' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',240,10,true); end if;
+ select id into itm from public.menu_items where name_tr='Jagermeister' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',280,10,true); end if;
+ select id into itm from public.menu_items where name_tr='Grappa' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',240,10,true); end if;
+ select id into itm from public.menu_items where name_tr='Limoncello' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Shot 5 CL','Shot 5 CL','Shot 5 CL',240,10,true); end if;
+
+ -- Whisky: remove item not present on current Wix and rebuild exact current Wix variants.
+ update public.menu_items set is_active=false where name_tr='The Glenlivet 18. Y.O. %43';
+ for itm in select id from public.menu_items where name_tr in ('CHIVAS REGAL 12. Y. O','CHIVAS REGAL 18. Y. O','JOHNNIE WALKER BLACK LABEL','Bulleit Bourbon','Jack Daniels Tennessee','Jameson İrish','Glenmorangie 10 Y.O. %40','Talisker 10. Y.O. %45,8','The Macallan 12 Y.O. Sherry Oak Cask') loop
+   delete from public.menu_item_variants where item_id=itm;
+ end loop;
+ select id into itm from public.menu_items where name_tr='CHIVAS REGAL 12. Y. O' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'SHOT','SHOT','SHOT',400,10,true),(itm,'DUBLE','DOUBLE','ДВОЙНОЙ',700,20,true),(itm,'ŞİŞE','BOTTLE','БУТЫЛКА',4100,30,true); end if;
+ select id into itm from public.menu_items where name_tr='CHIVAS REGAL 18. Y. O' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'SHOT','SHOT','SHOT',600,10,true),(itm,'DUBLE','DOUBLE','ДВОЙНОЙ',1100,20,true),(itm,'ŞİŞE','BOTTLE','БУТЫЛКА',7000,30,true); end if;
+ select id into itm from public.menu_items where name_tr='JOHNNIE WALKER BLACK LABEL' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'SHOT','SHOT','SHOT',350,10,true),(itm,'DUBLE','DOUBLE','ДВОЙНОЙ',650,20,true),(itm,'ŞİŞE','BOTTLE','БУТЫЛКА',3900,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Bulleit Bourbon' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Duble','Double','Двойной',800,10,true),(itm,'Şişe','Bottle','Бутылка',5000,20,true); end if;
+ select id into itm from public.menu_items where name_tr='Jack Daniels Tennessee' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',350,10,true),(itm,'Duble','Double','Двойной',650,20,true),(itm,'Şişe','Bottle','Бутылка',3900,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Jameson İrish' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',350,10,true),(itm,'Duble','Double','Двойной',650,20,true),(itm,'Şişe','Bottle','Бутылка',3900,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Glenmorangie 10 Y.O. %40' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',400,10,true),(itm,'Duble','Double','Двойной',780,20,true),(itm,'Şişe','Bottle','Бутылка',4370,30,true); end if;
+ select id into itm from public.menu_items where name_tr='Talisker 10. Y.O. %45,8' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',430,10,true),(itm,'Duble','Double','Двойной',840,20,true),(itm,'Şişe','Bottle','Бутылка',4620,30,true); end if;
+ select id into itm from public.menu_items where name_tr='The Macallan 12 Y.O. Sherry Oak Cask' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',1200,10,true),(itm,'Duble','Double','Двойной',1900,20,true),(itm,'Şişe','Bottle','Бутылка',12000,30,true); end if;
+end $$;

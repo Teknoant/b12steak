@@ -108,3 +108,17 @@ body{background:#fff}
  .wixMenu .dish{grid-template-columns:92px minmax(0,1fr);gap:13px;padding-bottom:28px}
  .menuItemImage{width:92px;height:92px}
 }
+
+
+/* Wix menu header */
+.menuSiteHeader{height:104px;background:#0b0b0b;color:#fff;border:0;position:relative;padding:0 max(calc((100vw - 670px)/2),24px);align-items:flex-end;padding-bottom:13px}
+.menuSiteHeader .siteBrand{position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:2}
+.menuSiteHeader .siteBrand img{display:block;width:82px;height:82px;object-fit:contain;background:#fff;border-radius:0 0 7px 7px}
+.menuSiteHeader .desktopNav{width:100%;justify-content:flex-start;gap:22px;font-size:10px}
+.menuSiteHeader .langs{margin-left:auto;border:0;padding:0}
+@media(max-width:700px){
+ .menuSiteHeader{height:76px;padding:0 18px 10px;align-items:flex-end}
+ .menuSiteHeader .siteBrand{top:0}
+ .menuSiteHeader .siteBrand img{width:62px;height:62px}
+ .menuSiteHeader .mobileNav{margin-left:auto}
+}

@@ -122,3 +122,46 @@ body{background:#fff}
  .menuSiteHeader .siteBrand img{width:62px;height:62px}
  .menuSiteHeader .mobileNav{margin-left:auto}
 }
+
+
+/* QR menu: mobile-first usability overrides */
+@media(max-width:700px){
+ body{overflow-x:hidden}
+ .menuSiteHeader{height:72px;padding:0 16px 9px;background:#0b0b0b}
+ .menuSiteHeader .siteBrand img{width:58px;height:58px}
+ .menuSiteHeader .mobileNav{display:block;margin-left:auto;color:#fff}
+ .menuSiteHeader .mobileNav summary{color:#fff;font-size:13px}
+ .menuSiteHeader .mobileNav>div{top:72px;background:#171717;border-color:#333;color:#fff;z-index:20}
+ .menuSiteHeader .mobileNav a{color:#fff}
+ .menuPage{width:100%;max-width:none;margin:0;background:#0b0b0b}
+ .menuTop{padding:22px 16px 8px}
+ .menuTop h1{font-size:30px;line-height:1.1;margin:0 0 22px}
+ .menuTabs{display:flex;justify-content:flex-start;gap:22px;width:calc(100vw - 32px);overflow-x:auto;overscroll-behavior-x:contain;padding:0 0 12px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+ .menuTabs a{flex:0 0 auto;font-size:13px;line-height:1.2;padding:5px 0 8px;scroll-snap-align:start}
+ .wixMenu{width:100%;padding:18px 16px 56px}
+ .menuCategoryTitle{font-size:28px;line-height:1.15;margin-bottom:32px}
+ .wixMenu .menuSection{margin-bottom:42px}
+ .wixMenu .menuSection>h2{font-size:21px;line-height:1.2;margin-bottom:22px}
+ .wixMenu .dish{grid-template-columns:96px minmax(0,1fr);gap:13px;padding:0 0 28px;align-items:start}
+ .menuItemImage{width:96px;height:96px;border-radius:0;object-fit:cover}
+ .dishCopy{min-width:0}
+ .dishTitleRow{display:grid;grid-template-columns:auto minmax(8px,1fr) auto;align-items:baseline;min-width:0}
+ .dishCopy h3{font-size:14px;line-height:1.25;white-space:normal;overflow-wrap:anywhere}
+ .dishDots{width:auto;min-width:8px;margin:0 4px 3px}
+ .dishPrice,.dishPrice>strong{font-size:13px;line-height:1.25}
+ .dishPrice{min-width:max-content}
+ .variant{font-size:11px;gap:5px;white-space:normal}
+ .dishCopy>p{font-size:12px;line-height:1.4;margin-top:7px;max-width:none}
+ .dishCopy .dishTags{font-size:10px!important;line-height:1.35}
+ footer{display:none}
+}
+@media(max-width:390px){
+ .menuTop{padding-left:13px;padding-right:13px}
+ .menuTabs{width:calc(100vw - 26px)}
+ .wixMenu{padding-left:13px;padding-right:13px}
+ .wixMenu .dish{grid-template-columns:82px minmax(0,1fr);gap:11px}
+ .menuItemImage{width:82px;height:82px}
+ .dishCopy h3{font-size:13px}
+ .dishCopy>p{font-size:11px}
+ .dishPrice,.dishPrice>strong{font-size:12px}
+}

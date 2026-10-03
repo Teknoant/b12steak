@@ -23,3 +23,54 @@
  .variant{grid-template-columns:1fr auto;max-width:260px}
  .variant span{text-align:left}
 }
+
+
+/* Wix dark menu exact-layout pass */
+.menuPage{background:#0b0b0b;color:#fff;min-height:100vh;padding-bottom:80px}
+.menuTop{background:#0b0b0b;color:#fff;padding:34px 5.8vw 24px;border:0;text-align:left}
+.menuTop h1{font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;margin:0 0 38px}
+.menuTabs{display:flex;justify-content:flex-end;align-items:center;gap:34px;flex-wrap:wrap;margin-top:-62px}
+.menuTabs a{color:#fff;font-size:15px;padding:0 0 8px;border:0}
+.menuTabs a.active{color:#d5b07a;border:0}
+.wixMenu{width:auto;max-width:none;margin:0;padding:14px 5.8vw 80px}
+.menuCategoryTitle{font-family:Georgia,"Times New Roman",serif;text-align:left;font-size:34px;font-weight:400;margin:0 0 42px}
+.wixMenu .menuSection{margin:0 0 52px}
+.wixMenu .menuSection>h2{font-family:Georgia,"Times New Roman",serif;color:#d5b07a;text-align:left;font-size:26px;font-weight:400;margin:0 0 30px;padding:0;border:0}
+.sectionRule{display:none}
+.wixMenu .dish{display:grid;grid-template-columns:136px minmax(0,1fr);gap:19px;padding:0 0 44px;border:0;align-items:start}
+.wixMenu .dish:last-child{padding-bottom:0}
+.menuItemImage{width:136px;max-width:none;height:136px;aspect-ratio:1;object-fit:cover;margin:0}
+.dishCopy{min-width:0;padding-top:1px}
+.dishTitleRow{display:flex;align-items:baseline;width:100%;min-width:0}
+.dishCopy h3{font-family:Arial,Helvetica,sans-serif;color:#fff;font-size:16px;line-height:1.2;font-weight:400;margin:0;white-space:nowrap}
+.dishDots{flex:1;min-width:20px;margin:0 4px 3px;border-bottom:2px dotted rgba(255,255,255,.85)}
+.dishPrice{color:#fff;text-align:right;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.2;white-space:nowrap}
+.dishPrice>strong{font-size:16px;font-weight:400}
+.variant{display:flex;justify-content:flex-end;gap:10px;line-height:1.35;margin:0 0 2px}
+.variant span{text-align:right}
+.variant strong{font-weight:400;white-space:nowrap}
+.dishCopy>p{font-family:Arial,Helvetica,sans-serif;color:#fff;font-size:14px;line-height:1.3;margin:10px 0 0;max-width:780px}
+.dishCopy .dishTags{color:#d5b07a;font-size:11px!important;margin-top:7px!important}
+@media(max-width:700px){
+ .menuTop{padding:30px 20px 20px}
+ .menuTop h1{font-size:31px;margin-bottom:25px}
+ .menuTabs{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;gap:24px;margin:0;padding:0 0 10px;scrollbar-width:none}
+ .menuTabs a{font-size:13px;white-space:nowrap}
+ .wixMenu{padding:20px 20px 60px}
+ .menuCategoryTitle{font-size:30px;margin-bottom:34px}
+ .wixMenu .menuSection>h2{font-size:23px;margin-bottom:24px}
+ .wixMenu .dish{grid-template-columns:100px minmax(0,1fr);gap:14px;padding-bottom:30px}
+ .menuItemImage{width:100px;height:100px}
+ .dishCopy h3,.dishPrice,.dishPrice>strong{font-size:13px}
+ .dishCopy>p{font-size:11px;line-height:1.35;margin-top:7px}
+ .dishDots{min-width:8px}
+}
+@media(max-width:420px){
+ .wixMenu{padding-left:14px;padding-right:14px}
+ .wixMenu .dish{grid-template-columns:82px minmax(0,1fr);gap:11px}
+ .menuItemImage{width:82px;height:82px}
+ .dishCopy h3{white-space:normal}
+ .dishTitleRow{align-items:flex-start}
+ .dishDots{margin-top:10px}
+ .variant{white-space:normal}
+}

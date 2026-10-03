@@ -122,8 +122,6 @@ const localImage=(name:string)=>{
   "marchesi di barolo & serrragilli barbaresco":"/images/menu/sarap/serragrilli-barbaresco.webp",
   "tomassi amarone della valpolicella classico":"/images/menu/sarap/Tommasi-Amarone-Classico-Since1902.webp",
   "suvla / chardonnay":"/images/menu/sarap/SUVLA.webp",
-  "suvla sauvignon blanc & semillon":"/images/menu/sarap/SUVLA.webp",
-  "sartori pinot grigio":"/images/menu/sarap/BLUS.webp"
  };
  return images[n]||Object.entries(images).find(([key])=>imageKey(key)===n)?.[1]||null;
 };

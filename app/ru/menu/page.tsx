@@ -32,6 +32,7 @@ const localImage=(name:string)=>{
   "olmeca":"/images/menu/alkollu/tekila/olmeca-blanco.webp",
   "smirnoff red":"/images/menu/alkollu/votka/smirnof-edited-2.webp",
   "absolut":"/images/menu/alkollu/votka/99033-absolut-vodka-1L-40-vol.webp",
+  "belvedere":"https://static.wixstatic.com/media/5f9784_b28bd918a9ec40aa8945847245151c4d~mv2.png",
   "beefeater":"/images/menu/alkollu/cin/gin-beefeater-1l.webp",
   "gordon's":"/images/menu/alkollu/cin/gordon-s-70-cl.webp",
   "campari":"/images/menu/alkollu/likor/campari.webp",

@@ -34,7 +34,7 @@ const localImage=(name:string)=>{
   "demi glace bonfile":"/images/menu/ana-yemek/beef/Takoz-Bonfile-edited.webp",
   "file şato beef 4 kişilik":"https://static.wixstatic.com/media/5f9784_8e61a326b2924697b4b6a04756fce2a5~mv2.jpg",
   "file şato beef 2 kişilik":"https://static.wixstatic.com/media/5f9784_8e61a326b2924697b4b6a04756fce2a5~mv2.jpg",
-  "cheddar köfte":"/images/menu/kofte/cheddar-k├Âfte.webp",
+  "cheddar köfte":"/images/menu/kofte/cheddar-k├Âfte-edited.webp",
   "cheese burger":"/images/menu/burger/chesse-burger.webp",
   "lokum burger":"/images/menu/burger/Lokum-Dana-Burger.webp",
   "solo 1":"/images/menu/solo/Solo1.webp",

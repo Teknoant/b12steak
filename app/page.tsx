@@ -1,6 +1,6 @@
 export default function Home(){return <main className="b12Home">
 <section className="b12Hero">
- <img className="b12HeroPhoto" src="/images/menu/ana-yemek/dry-aged/Dallas.webp" alt="B12 Steak Dallas"/>
+ <img className="b12HeroPhoto" src="/images/site/b12-hero-background.png" alt="B12 Steak"/>
  <div className="b12HeroOverlay"/>
  <div className="b12HeroCopy"><p>STEAK &amp; KASAP KÜLTÜRÜ</p><h1>B12 STEAK</h1><div>Özenle seçilmiş etler, usta dokunuşlarla<br/>unutulmaz lezzetlere dönüşür.</div></div>
 </section>

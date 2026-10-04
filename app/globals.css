@@ -845,3 +845,20 @@ body:has(.modernMenu) .siteHeader,body:has(.modernMenu)>footer{display:none!impo
 @media(max-width:560px){
  .modernProduct .modernProductHero{height:auto!important;aspect-ratio:4/3}
 }
+
+/* Modern header alignment and functional controls */
+.modernTop{position:sticky;grid-template-columns:54px 1fr 92px;height:82px;padding:0 18px}
+.modernLogo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block}
+.modernLogo img{width:74px!important;height:66px!important;object-fit:contain}
+.modernHamb{width:42px;height:42px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:8px;border:0;background:transparent}
+.modernHamb span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.modernTools{grid-column:3;justify-self:end}
+.modernLang{position:relative;padding:0!important;border:0!important;background:transparent!important}
+.modernLang summary{list-style:none;display:flex;align-items:center;gap:5px;padding:9px 11px;border:1px solid #303333;border-radius:22px;background:#141616;cursor:pointer;font-size:12px}
+.modernLang summary::-webkit-details-marker{display:none}
+.modernLangMenu{position:absolute;right:0;top:48px;width:148px;padding:6px;background:#111313;border:1px solid #303333;border-radius:13px;box-shadow:0 14px 35px rgba(0,0,0,.5);z-index:50}
+.modernLangMenu a{display:block;padding:10px 11px;border-radius:8px;color:#eee;text-decoration:none;font-size:12px}.modernLangMenu a:hover,.modernLangMenu a.active{background:#242525;color:#edbd5e}
+.modernDrawer{position:fixed;z-index:80;top:0;bottom:0;left:max(0px,calc(50% - 260px));width:min(310px,82vw);padding:94px 25px 30px;background:#0b0d0d;border-right:1px solid #2b2d2d;box-shadow:18px 0 50px rgba(0,0,0,.55)}
+.modernDrawer a{display:block;padding:16px 4px;border-bottom:1px solid #282a2a;color:#fff;text-decoration:none;font-size:16px}.modernDrawer a:hover{color:#e7b95e}
+.modernDrawerClose{position:absolute;right:18px;top:20px;border:0;background:none;color:#fff;font-size:34px}
+.modernDrawerBackdrop{position:fixed;z-index:70;inset:0;border:0;background:rgba(0,0,0,.58)}

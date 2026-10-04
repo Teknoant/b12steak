@@ -650,3 +650,12 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
    transform:translateX(42px);
  }
 }
+
+/* Show feature artwork completely without cropping */
+@media(min-width:851px){
+ .b12Cards figure img{
+   object-fit:contain;
+   object-position:center top;
+   background:#090a0a;
+ }
+}

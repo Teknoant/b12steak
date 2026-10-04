@@ -1,7 +1,7 @@
 export default function Home(){return <main className="b12Home">
 <section className="b12Hero">
  <img className="b12HeroPhoto" src="/images/site/b12-hero-background.png" alt="B12 Steak"/>
- <div className="b12HeroOverlay"/><div className="b12HeroNav"><img src="/images/site/logo/b12logo.webp" alt="B12 Steak"/><nav><a className="active" href="/">ANA SAYFA</a><a className="menuCta" href="/menu">MENÜYÜ KEŞFET <span>→</span></a></nav></div>
+ <div className="b12HeroOverlay"/><div className="b12HeroNav"><img src="/images/site/logo/logo-siyah.webp" alt="B12 Steak"/><nav><a className="active" href="/">ANA SAYFA</a><a className="menuCta" href="/menu">MENÜYÜ KEŞFET <span>→</span></a></nav></div>
  <div className="b12HeroCopy"><p>STEAK &amp; KASAP KÜLTÜRÜ</p><h1>B12 STEAK</h1><div>Özenle seçilmiş etler, usta dokunuşlarla<br/>unutulmaz lezzetlere dönüşür.</div><a className="heroMenuCta" href="/menu">MENÜYÜ KEŞFET <span>→</span></a></div>
 </section>
 <section className="b12Promises">

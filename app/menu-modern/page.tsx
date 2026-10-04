@@ -162,7 +162,7 @@ export default async function ModernMenu({searchParams}:{searchParams:Promise<{m
  const activeItems=sections.flatMap(s=>allItems.filter(i=>i.section_id===s.id));
  const hero=activeItems.find(i=>itemImage(i))||activeItems[0];
  const heroByCategory:Record<string,string>={
-  "baslangic":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
+  "baslangic":"/images/menu/baslangic/Steak-tartar-edited.webp",
   "ana-yemek":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
   "anayemek":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
   "soft":"/images/site/b12-hero-background.png",

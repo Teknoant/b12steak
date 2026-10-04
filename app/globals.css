@@ -311,3 +311,67 @@ body{background:#fff}
 .variantAdvancedBody{padding:10px}
 @media(max-width:700px){.quickVariants{grid-template-columns:1fr 1fr}.variantAdvanced>summary span{display:none}}
 @media(max-width:420px){.quickVariants{grid-template-columns:1fr}}
+
+/* B12 premium single-page landing */
+.b12Landing{background:#090909;color:#fff;min-height:100vh}
+body:has(.b12Landing){background:#090909}
+body:has(.b12Landing) .siteHeader{position:absolute;z-index:30;top:0;left:0;right:0;background:linear-gradient(180deg,rgba(0,0,0,.88),rgba(0,0,0,0));border:0;color:#fff;max-width:none;padding:20px 6vw}
+body:has(.b12Landing) .siteHeader a{color:#fff}
+body:has(.b12Landing) .siteBrand{font-family:Georgia,serif;font-size:17px;font-weight:700;letter-spacing:.12em}
+body:has(.b12Landing)>footer{background:#050505;color:#777;border:0}
+.landingHero{height:min(720px,82vh);min-height:570px;position:relative;overflow:hidden;background:#0b0b0b}
+.landingHeroImage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.9) contrast(1.08);transform:scale(1.015)}
+.landingShade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.68) 35%,rgba(0,0,0,.24) 70%,rgba(0,0,0,.5) 100%),linear-gradient(0deg,rgba(0,0,0,.78),transparent 48%)}
+.landingHeroContent{position:relative;z-index:2;width:min(1180px,88vw);margin:0 auto;padding-top:190px}
+.landingEyebrow{margin:0 0 16px;color:#d7aa55;font:500 13px/1.2 Arial,sans-serif;letter-spacing:.2em}
+.landingHero h1{font:600 clamp(58px,7.4vw,118px)/.9 Georgia,serif;letter-spacing:.035em;margin:0;max-width:800px}
+.landingLead{font:300 clamp(17px,1.5vw,23px)/1.55 Arial,sans-serif;color:#e9e5df;max-width:520px;margin:24px 0 30px}
+.goldButton,.outlineGold{display:inline-flex;align-items:center;justify-content:space-between;gap:34px;text-decoration:none;font:700 12px Arial,sans-serif;letter-spacing:.08em;transition:.2s}
+.goldButton{background:#d5a94e;color:#111;padding:17px 22px;min-width:190px}
+.goldButton:hover{background:#e5bd68}
+.goldButton span,.outlineGold span{font-size:19px;font-weight:400}
+.landingValues{display:grid;grid-template-columns:repeat(4,1fr);max-width:1400px;margin:0 auto;border-bottom:1px solid #28241d;background:#0b0b0b}
+.landingValues>div{display:flex;align-items:center;gap:15px;padding:23px 30px;border-right:1px solid #29251e}
+.landingValues>div:last-child{border-right:0}
+.landingValues b{font:400 26px Georgia,serif;color:#d5a94e}
+.landingValues span{display:flex;flex-direction:column;gap:5px}
+.landingValues strong{font:600 10px Arial,sans-serif;letter-spacing:.08em}
+.landingValues small{font:400 10px Arial,sans-serif;color:#8f8c87}
+.landingStory{max-width:1400px;margin:0 auto;padding:85px 6vw 95px;display:grid;grid-template-columns:minmax(300px,.8fr) 1.4fr;gap:70px;align-items:center;background:radial-gradient(circle at 15% 45%,#1a140c 0,transparent 32%)}
+.storyCopy h2{font:500 clamp(38px,4vw,64px)/.98 Georgia,serif;letter-spacing:.02em;margin:0 0 24px}
+.storyCopy>p:not(.landingEyebrow){font:400 13px/1.75 Arial,sans-serif;color:#c6c1b9;max-width:520px}
+.outlineGold{margin-top:17px;border:1px solid #b98d3c;color:#e5bd68;padding:13px 16px;min-width:170px}
+.outlineGold:hover{background:#d5a94e;color:#111}
+.storyGrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:9px;height:390px}
+.storyGrid figure{position:relative;margin:0;overflow:hidden;background:#161616}
+.storyGrid img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.storyGrid figure:hover img{transform:scale(1.035)}
+.storyGrid figure:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.storyGrid figcaption{position:absolute;z-index:2;left:16px;right:12px;bottom:15px;display:flex;flex-direction:column;gap:4px}
+.storyGrid figcaption b{font:500 18px Georgia,serif}
+.storyGrid figcaption span{font:10px Arial,sans-serif;color:#bbb}
+.landingMenuCta{text-align:center;padding:90px 20px 105px;border-top:1px solid #242018;background:radial-gradient(circle at 50% 120%,#2b1b09,transparent 45%),#070707}
+.landingMenuCta h2{font:500 clamp(28px,3.3vw,48px)/1.15 Georgia,serif;max-width:800px;margin:0 auto 28px}
+@media(max-width:800px){
+ body:has(.b12Landing) .siteHeader{padding:14px 18px}
+ .landingHero{height:680px;min-height:0}
+ .landingHeroImage{object-position:60% center}
+ .landingShade{background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.32)),linear-gradient(0deg,rgba(0,0,0,.88),transparent 60%)}
+ .landingHeroContent{width:auto;margin:0;padding:190px 24px 0}
+ .landingHero h1{font-size:57px}
+ .landingLead{font-size:16px;max-width:330px}
+ .landingValues{grid-template-columns:1fr 1fr}
+ .landingValues>div{padding:18px;border-bottom:1px solid #29251e}
+ .landingStory{grid-template-columns:1fr;padding:62px 20px;gap:38px}
+ .storyGrid{height:330px;grid-template-columns:1.2fr 1fr}
+ .storyGrid figure:last-child{display:none}
+}
+@media(max-width:480px){
+ .landingHero{height:620px}
+ .landingHeroContent{padding-top:175px}
+ .landingHero h1{font-size:48px}
+ .landingValues{grid-template-columns:1fr}
+ .landingValues>div{border-right:0}
+ .storyGrid{height:285px}
+ .landingMenuCta{padding:70px 20px 80px}
+}

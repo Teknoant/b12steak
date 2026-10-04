@@ -751,3 +751,15 @@ body:has(.modernMenu) .siteHeader,body:has(.modernMenu)>footer{display:none!impo
 .modernProductTags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}.modernProductTags span{padding:8px 11px;border:1px solid #333636;border-radius:18px;color:#ccc;font-size:11px}
 .modernVariants{border-top:1px solid #292c2c;padding-top:20px}.modernVariants h2{font-size:17px;margin:0 0 10px}.modernVariants>div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #242626;font-size:14px}.modernVariants strong{color:#edc56e;font-size:16px}
 .modernFullMenu{margin-top:26px;height:50px;border:1px solid #b58c3f;border-radius:25px;display:flex;align-items:center;justify-content:center;color:#e8bd60;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.08em}.modernMissing{padding:80px 24px}.modernMissing a{color:#e7b95e;text-decoration:none}
+
+/* Modern menu visual corrections */
+.modernMenu .modernHero{height:215px;background:#0b0c0c}
+.modernMenu .modernHero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover!important;object-position:center 48%!important}
+.modernMenu .modernLogo img{width:66px;height:58px;object-fit:contain}
+.modernProduct .modernProductHero{height:335px;background:#0b0c0c}
+.modernProduct .modernProductHero>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center!important;margin:0!important}
+@media(max-width:560px){
+ .modernMenu{width:100%;max-width:none;box-shadow:none}
+ .modernMenu .modernHero{height:205px}
+ .modernProduct .modernProductHero{height:min(72vw,330px)}
+}

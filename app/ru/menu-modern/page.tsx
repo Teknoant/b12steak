@@ -1,4 +1,3 @@
-import MenuLanguageSwitcher from "../menu-language-switcher";
 import MenuImage from "../../menu-image";
 import ModernMenuHeader from "../../menu-modern/modern-menu-header";
 import {createServerSupabase} from "../../lib/supabase/server";

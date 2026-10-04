@@ -375,3 +375,6 @@ body:has(.b12Landing)>footer{background:#050505;color:#777;border:0}
  .storyGrid{height:285px}
  .landingMenuCta{padding:70px 20px 80px}
 }
+
+/* Homepage: hide only the marked top navigation/logo */
+body:has(.b12Landing) .siteHeader{display:none}

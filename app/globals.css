@@ -725,3 +725,22 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
 .b12Icon{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;color:#dda82f}
 .b12Icon svg{width:30px;height:30px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:850px){.b12Icon{width:30px;height:30px;flex-basis:30px}.b12Icon svg{width:27px;height:27px}}
+
+/* MODERN MENU - isolated from classic /menu */
+body:has(.modernMenu){margin:0;background:#080909;color:#fff}
+body:has(.modernMenu) .siteHeader,body:has(.modernMenu)>footer{display:none!important}
+.modernMenu{--gold:#e7b95e;max-width:520px;min-height:100vh;margin:auto;background:linear-gradient(180deg,#0b0d0d,#070808);color:#fff;font-family:Arial,sans-serif;box-shadow:0 0 70px #000}
+.modernTop{height:78px;display:grid;grid-template-columns:52px 1fr auto;align-items:center;padding:0 18px;background:#090b0b;border-bottom:1px solid #202222;position:sticky;top:0;z-index:20}
+.modernHamb{border:0;background:none;color:#fff;font-size:25px;text-align:left;padding:0;cursor:pointer}
+.modernLogo{justify-self:center}.modernLogo img{display:block;width:60px;height:52px;object-fit:contain}
+.modernTools{display:flex;align-items:center;gap:12px}.modernSearch{font-size:25px}.modernLang{display:flex;align-items:center;gap:5px;padding:9px 10px;border:1px solid #292c2c;border-radius:22px;background:#141616;font-size:12px}
+.modernHero{height:230px;position:relative;overflow:hidden;background:#111}.modernHero>img{width:100%;height:100%;object-fit:cover;display:block}.modernHeroShade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,6,6,.94) 0,rgba(5,6,6,.08) 64%)}
+.modernHeroText{position:absolute;left:22px;right:22px;bottom:18px}.modernHeroText h1{font:500 37px/1 Georgia,serif;margin:0 0 8px}.modernHeroText p{margin:0;color:#d5d5d5;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.modernCategories{display:flex;gap:9px;padding:14px 18px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #202222;position:sticky;top:78px;z-index:19;background:rgba(9,11,11,.96);backdrop-filter:blur(12px)}.modernCategories::-webkit-scrollbar{display:none}
+.modernCategories a{flex:0 0 auto;color:#e6e6e6;text-decoration:none;border:1px solid #343737;border-radius:22px;padding:10px 17px;font-size:12px;font-weight:700}.modernCategories a.active{background:var(--gold);border-color:var(--gold);color:#17120a}
+.modernContent{padding:0 18px 34px}.modernSection>h2{font:500 22px/1.1 Georgia,serif;color:var(--gold);margin:22px 0 7px}
+.modernDish{min-height:128px;display:grid;grid-template-columns:108px 1fr 34px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #292b2b;color:#fff;text-decoration:none}
+.modernDishImg{width:108px;height:108px;border-radius:10px;overflow:hidden;background:#151717;display:grid;place-items:center;color:#9d824b;font:bold 20px Georgia,serif}.modernDishImg img{width:100%;height:100%;object-fit:cover;display:block}
+.modernDishInfo{min-width:0}.modernDishInfo h3{font-size:17px;margin:0 0 6px}.modernDishInfo p{font-size:12px;line-height:1.38;color:#d0d0d0;margin:0 0 7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.modernDishInfo small{display:block;color:#aaa;font-size:10px;margin-bottom:7px}.modernDishInfo strong{font-size:18px;color:#fff}
+.modernPlus{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#17120a;font-size:25px;font-weight:400}
+@media(min-width:800px){body:has(.modernMenu){background:#050606}.modernMenu{margin-top:22px;margin-bottom:22px;border:1px solid #242626;border-radius:28px;overflow:clip;min-height:calc(100vh - 44px)}}

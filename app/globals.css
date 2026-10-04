@@ -509,3 +509,17 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
  .b12Story{min-height:330px;padding-top:28px;padding-bottom:34px}
  .b12Cards{height:235px}
 }
+
+/* Keep the complete supplied story artwork visible on desktop */
+@media(min-width:851px){
+ .b12Story{
+   min-height:0;
+   height:auto;
+   aspect-ratio:1536/438;
+   padding-top:2.3%;
+   padding-bottom:2.3%;
+   background-size:100% 100%;
+   background-position:center;
+ }
+ .b12Cards{height:min(15.5vw,270px)}
+}

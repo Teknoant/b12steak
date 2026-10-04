@@ -162,14 +162,14 @@ export default async function ModernMenu({searchParams}:{searchParams:Promise<{m
  const activeItems=sections.flatMap(s=>allItems.filter(i=>i.section_id===s.id));
  const hero=activeItems.find(i=>itemImage(i))||activeItems[0];
  const heroByCategory:Record<string,string>={
-  "baslangic":"/images/menu/baslangic/Steak-tartar-edited.webp",
-  "ana-yemek":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
-  "anayemek":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
-  "soft":"/images/site/b12-hero-background.png",
-  "tatli":"/images/site/b12-story-background.png",
-  "alkollu":"/images/site/lezzet.png",
-  "viski":"/images/site/atmosfer.png",
-  "sarap":"/images/site/lezzet.png"
+  "baslangic":"/images/site/baslangic.png",
+  "ana-yemek":"/images/site/anayemek.png",
+  "anayemek":"/images/site/anayemek.png",
+  "soft":"/images/site/soft.png",
+  "tatli":"/images/site/tatli.png",
+  "alkollu":"/images/site/alkollu.png",
+  "viski":"/images/site/viski.png",
+  "sarap":"/images/site/sarap.png"
  };
  const heroImage=heroByCategory[active?.slug||""]||(hero&&itemImage(hero));
  return <main className="modernMenu">

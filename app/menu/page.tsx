@@ -32,8 +32,8 @@ const localImage=(name:string)=>{
   "kuzu kafes":"/images/menu/ana-yemek/beef/Kuzu-Kafes.webp",
   "dilim asado":"/images/menu/ana-yemek/beef/dana-asado.webp",
   "demi glace bonfile":"/images/menu/ana-yemek/beef/Takoz-Bonfile-edited.webp",
-  "file şato beef 4 kişilik":"https://static.wixstatic.com/media/5f9784_8e61a326b2924697b4b6a04756fce2a5~mv2.jpg",
-  "file şato beef 2 kişilik":"https://static.wixstatic.com/media/5f9784_8e61a326b2924697b4b6a04756fce2a5~mv2.jpg",
+  "file şato beef 4 kişilik":"/images/menu/ana-yemek/beef/satobiryan.webp",
+  "file şato beef 2 kişilik":"/images/menu/ana-yemek/beef/satobiryan.webp",
   "cheddar köfte":"/images/menu/kofte/cheddar-k├Âfte-edited.webp",
   "cheese burger":"/images/menu/burger/chesse-burger.webp",
   "mexican burger":"/images/menu/burger/chesse-burger.webp",
@@ -41,16 +41,16 @@ const localImage=(name:string)=>{
   "lokum burger":"/images/menu/burger/Lokum-Dana-Burger.webp",
   "solo 1":"/images/menu/solo/Solo1.webp",
   "solo 2":"/images/menu/solo/solo2.webp",
-  "su":"https://static.wixstatic.com/media/5f9784_64ea26890dd54416802da3156e4122f2~mv2.png",
-  "şalgam suyu 330 ml":"https://static.wixstatic.com/media/5f9784_798c0614a3834d0f8106807c46a754cd~mv2.png",
-  "ayran":"https://static.wixstatic.com/media/5f9784_3d00b47c32ad4fe59e0059bee3a0df54~mv2.png",
-  "sprite":"https://static.wixstatic.com/media/5f9784_fd7c4d8a20fe419db75443b3ab10d89d~mv2.png",
-  "coca cola":"https://static.wixstatic.com/media/5f9784_f3fd60f9d4cf434484aa4563377577fd~mv2.png",
-  "fanta":"https://static.wixstatic.com/media/5f9784_66c44ea812e14690ad4709230e5b32ad~mv2.png",
-  "cappy meyve suyu":"https://static.wixstatic.com/media/5f9784_356e27e72b6d4c7bb4fb898aa626db4b~mv2.png",
-  "fuse tea":"https://static.wixstatic.com/media/5f9784_7ade8b1189da4c89a533b969f62277e5~mv2.png",
-  "redbull":"https://static.wixstatic.com/media/5f9784_27f512ad91ab472f8cce4141cc3d9392~mv2.jpg",
-  "taze portakal suyu":"https://static.wixstatic.com/media/5f9784_283b065481f6438c918a79566465c4ad~mv2.png",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "s.pellegrino":"/images/menu/soft/St.Pellegrino.webp",
   "soda":"/images/menu/soft/Soda.webp",
   "uludağ soda":"/images/menu/soft/uludag.webp",

@@ -1,1 +1,22 @@
-export default function Home(){return <main className="wixHome"><section className="wixHero"><div className="heroCollage"><img src="/images/menu/ana-yemek/dry-aged/Dallas.webp" alt="Dallas"/><img src="/images/menu/salatalar/tulumsalata.webp" alt="Tulum Salata"/><img src="/images/menu/ana-yemek/beef/Bonfile-Lokum.webp" alt="Bonfile Lokum"/></div><div className="heroTitle"><h1>B12 STEAK</h1><p>Kasap Ali Kuruluşudur.</p></div></section><section className="aboutWix"><img className="b12Logo" src="/images/site/logo/b12logo.webp" alt="B12 Steak"/><div><h2>BİZ KİMİZ</h2><p>Kasap Ali ve B 12 markalarının yaratıcısı Ali Yüzüldü, mesleğine 1993’te Kahramanmaraş’ta kasap çırağı olarak başladı. 2012 yılında “Kasap Ali” markasıyla başlayan girişimci süreç, 2016’da kendi besi çiftliğini oluşturması ve ardından B12 Et Lokantası ile; mesleğin bir önceki ve bir sonraki seviyelerinde başarıyla devam etti.</p><p>“Kasap Ali” ile müşterisine etten de önce sunduğu, dostane yaklaşım, güler yüzlü hizmet ve standart dışı yaklaşımlarla B12’nin “size özel” felsefesinin temelini atan Ali Yüzüldü.</p><p>Bugün Antalya’da belli alanlarda uzmanlıkları bilinen restoran markaları içinde et ile anılan ilk tercihtir.</p><p>Kasap Ali, etin yanında değerli tavsiyeler alabileceğiniz tekrar ziyaretlerinizde memnuniyetinizin titizlikle sorulduğu ve tatmininizin gerçek kazanç sayıldığı bir esnaf gibi, B12 ise misafirlerinizi, sizin özeniniz ve tutkunuzla ağırlamaya azimli beyefendiler ve hanımefendiler olarak hizmet vermeye devam ediyor.</p></div></section><section className="ourMenu"><div><h2>MENÜMÜZ</h2><p>B12 Steak olarak harika bir Steak deneyimi için ihtiyacınız olan her şey bizde mevcut. Ailecek yemeklerimize bayılacaksınız.</p><a href="/menu">Menüyü Görüntüle</a></div><img src="https://static.wixstatic.com/media/11062b_c9f95ce7e79f4921b2af2d505d108281~mv2.jpg" alt="Dilimleme Et"/></section><section className="contactWix"><div><h2>İLETİŞİME GEÇİN</h2><p>Çağlayan, Irmak Apartmanı, Fener Cd. No:52/A, 07160 Muratpaşa/Antalya</p><a href="tel:+902423233310">(0242) 323 33 10</a></div><img src="https://static.wixstatic.com/media/11062b_a404242fe5124f24a5084d0abf4fa795~mv2_d_7952_5304_s_4_2.jpg" alt="B12 Steak"/></section></main>}
+export default function Home(){return <main className="b12Landing">
+<section className="landingHero">
+ <img className="landingHeroImage" src="/images/menu/ana-yemek/dry-aged/Dallas.webp" alt="B12 Steak Dallas"/>
+ <div className="landingShade"/>
+ <div className="landingHeroContent"><p className="landingEyebrow">STEAK & KASAP KÜLTÜRÜ</p><h1>B12 STEAK</h1><p className="landingLead">Özenle seçilmiş etler, usta dokunuşlarla unutulmaz lezzetlere dönüşür.</p><a className="goldButton" href="/menu">MENÜYÜ KEŞFET <span>→</span></a></div>
+</section>
+<section className="landingValues">
+ <div><b>01</b><span><strong>ÖZENLE SEÇİLEN ETLER</strong><small>Yüksek kalite, üstün lezzet</small></span></div>
+ <div><b>02</b><span><strong>USTA KASAP DENEYİMİ</strong><small>1993'ten gelen kasap kültürü</small></span></div>
+ <div><b>03</b><span><strong>ÖZEL PİŞİRME TEKNİKLERİ</strong><small>Etin karakterine uygun hazırlık</small></span></div>
+ <div><b>04</b><span><strong>B12 DENEYİMİ</strong><small>Antalya'da steak & kasap kültürü</small></span></div>
+</section>
+<section className="landingStory">
+ <div className="storyCopy"><p className="landingEyebrow">BİZ KİMİZ</p><h2>BİR LEZZET<br/>HİKAYESİ</h2><p>Kasap Ali ve B12 markalarının yaratıcısı Ali Yüzüldü, mesleğine 1993’te Kahramanmaraş’ta kasap çırağı olarak başladı. Yıllar içinde edindiği tecrübe ve tutkuyla 2012’de “Kasap Ali” markasını hayata geçirdi; 2016’da bu deneyimi B12 Steak & Kasap ile bir üst seviyeye taşıdı.</p><p>B12; özenle seçilmiş etleri, kasaplık geleneğini ve misafirine özel hizmet anlayışını aynı sofrada buluşturur.</p><a className="outlineGold" href="/menu">MENÜYÜ İNCELE <span>→</span></a></div>
+ <div className="storyGrid">
+  <figure className="storyTall"><img src="/images/menu/ana-yemek/dry-aged/T-BONE.webp" alt="B12 T-Bone"/><figcaption><b>KALİTE</b><span>Özenle seçilen etler</span></figcaption></figure>
+  <figure><img src="/images/menu/ana-yemek/beef/Bonfile-Lokum.webp" alt="B12 Bonfile Lokum"/><figcaption><b>USTALIK</b><span>Yılların deneyimi</span></figcaption></figure>
+  <figure><img src="/images/menu/salatalar/tulumsalata.webp" alt="B12 Tulum Salata"/><figcaption><b>LEZZET</b><span>Her tabakta B12 imzası</span></figcaption></figure>
+ </div>
+</section>
+<section className="landingMenuCta"><p className="landingEyebrow">B12 STEAK & KASAP</p><h2>SOFRANIZI B12 LEZZETLERİYLE BULUŞTURUN</h2><a className="goldButton" href="/menu">MENÜYÜ KEŞFET <span>→</span></a></section>
+</main>}

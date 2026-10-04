@@ -659,3 +659,64 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
    background:#090a0a;
  }
 }
+
+/* Final premium feature cards */
+@media(min-width:851px){
+ .b12Cards{
+   display:grid;
+   grid-template-columns:repeat(4,minmax(0,1fr));
+   gap:8px;
+   height:min(17vw,290px);
+   align-items:stretch;
+ }
+ .b12Cards figure{
+   margin:0;
+   height:100%;
+   position:relative;
+   overflow:hidden;
+   background:#0b0b0a;
+   border:1px solid rgba(211,166,64,.10);
+   box-shadow:0 12px 28px rgba(0,0,0,.28);
+ }
+ .b12Cards figure img{
+   position:absolute;
+   inset:0;
+   width:100%;
+   height:100%;
+   display:block;
+   object-fit:cover;
+   object-position:center center;
+   background:none;
+   filter:brightness(.92) saturate(.94);
+   transition:transform .45s ease,filter .45s ease;
+ }
+ .b12Cards figure::after{
+   content:"";
+   position:absolute;
+   inset:0;
+   background:linear-gradient(to bottom,transparent 48%,rgba(5,5,4,.18) 61%,rgba(5,5,4,.96) 100%);
+   pointer-events:none;
+ }
+ .b12Cards figure:hover img{transform:scale(1.025);filter:brightness(1) saturate(1)}
+ .b12Cards figure figcaption{
+   position:absolute;
+   z-index:2;
+   left:0;right:0;bottom:0;
+   min-height:70px;
+   display:flex;
+   flex-direction:column;
+   justify-content:flex-end;
+   padding:18px 16px 13px;
+   background:none;
+ }
+ .b12Cards figcaption b{
+   font:500 18px/1.05 Georgia,serif;
+   letter-spacing:.01em;
+ }
+ .b12Cards figcaption span{
+   margin-top:6px;
+   font-size:10px;
+   line-height:1.25;
+   color:#e1ded8;
+ }
+}

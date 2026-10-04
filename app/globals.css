@@ -782,3 +782,29 @@ body:has(.modernMenu) .siteHeader,body:has(.modernMenu)>footer{display:none!impo
 @media(max-width:560px){
  .modernMenu .modernHero{height:auto;aspect-ratio:16/9}
 }
+
+/* Correct modern hero renderer: do not inherit classic menu thumbnail styles */
+.modernMenu .modernHero{
+ position:relative;
+ width:100%;
+ height:auto!important;
+ aspect-ratio:16/9;
+ overflow:hidden;
+ background:#080909;
+}
+.modernMenu .modernHeroArtwork{
+ position:absolute;
+ inset:0;
+ display:block;
+ width:100%!important;
+ height:100%!important;
+ max-width:none!important;
+ max-height:none!important;
+ object-fit:cover!important;
+ object-position:center center!important;
+ margin:0!important;
+ padding:0!important;
+ border:0!important;
+}
+.modernMenu .modernHeroShade{z-index:1}
+.modernMenu .modernHeroText{z-index:2}

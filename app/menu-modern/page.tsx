@@ -179,7 +179,7 @@ export default async function ModernMenu({searchParams}:{searchParams:Promise<{m
    <div className="modernTools"><span className="modernSearch">⌕</span><span className="modernLang">🇹🇷 <b>TR</b>⌄</span></div>
   </header>
   <section className="modernHero">
-   {heroImage&&<MenuImage src={heroImage} alt={active?.title_tr||"Menü"}/>}
+   {heroImage&&<img className="modernHeroArtwork" src={heroImage} alt={active?.title_tr||"Menü"}/>}
    <div className="modernHeroShade"/><div className="modernHeroText"><h1>{active?.title_tr||"Menü"}</h1><p>Özenle seçilmiş lezzetler, usta dokunuşlarla...</p></div>
   </section>
   <nav className="modernCategories">{categories.map(c=><a key={c.id} className={active?.id===c.id?"active":""} href={"/menu-modern?menu="+c.slug}>{c.title_tr}</a>)}</nav>

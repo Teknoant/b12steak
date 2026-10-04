@@ -260,3 +260,35 @@ body{background:#fff}
  .productSummaryMain b{max-width:150px}
  .adminSettings>summary span,.adminNewProduct>summary span{display:none}
 }
+
+/* Admin quick editing + save feedback */
+.adminNotice{position:sticky;top:10px;z-index:50;margin:12px 0;padding:11px 14px;border-radius:9px;font-size:12px;font-weight:700;box-shadow:0 5px 18px rgba(0,0,0,.08)}
+.adminNoticeOk{background:#e9f7ed;border:1px solid #b9dfc3;color:#236b36}
+.adminNoticeError{background:#fff0f0;border:1px solid #e6baba;color:#922}
+.compactEditForm{display:block;padding:12px 14px}
+.quickEdit{display:grid;grid-template-columns:minmax(180px,260px) 120px minmax(180px,300px);gap:12px;align-items:end;background:#f7f4ec;border:1px solid #e8dfca;border-radius:10px;padding:12px;margin-bottom:12px}
+.quickPrice>span{display:block;font-size:10px;font-weight:700;margin-bottom:5px}
+.quickPrice>div{display:flex;align-items:center;background:#fff;border:1px solid #c9c6be;border-radius:8px;overflow:hidden}
+.quickPrice input{margin:0;border:0!important;height:42px;font-size:19px;font-weight:700;padding:0 10px}
+.quickPrice b{padding:0 12px;font-size:16px}
+.quickLive{height:42px;display:flex!important;align-items:center;justify-content:center;gap:7px;border:1px solid #d6d2c8;border-radius:8px;background:#fff;font-size:11px!important}
+.quickLive input{width:auto!important;margin:0!important}
+.quickSave{height:42px;margin:0}
+.basicEdit{display:grid;grid-template-columns:1fr 2fr 100px;gap:10px}
+.basicEdit label,.languageGrid label{font-size:10px}
+.basicEdit input,.basicEdit select,.languageGrid input,.languageGrid textarea{display:block;width:100%;margin-top:5px;padding:9px;border:1px solid #ccc;border-radius:7px;background:#fff;font:inherit}
+.basicEdit .wide{grid-column:1/-1}
+.languageEdit{margin-top:10px;border:1px solid #e5e5e1;border-radius:9px;overflow:hidden}
+.languageEdit>summary{display:flex;justify-content:space-between;padding:11px 12px;cursor:pointer;background:#fafafa;font-size:11px;font-weight:700}
+.languageEdit>summary span{color:#888;font-weight:400}
+.languageGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.languageGrid .wide{grid-column:1/-1}
+.languageGrid textarea{min-height:64px;resize:vertical}
+@media(max-width:700px){
+ .quickEdit{grid-template-columns:1fr 100px}
+ .quickSave{grid-column:1/-1}
+ .basicEdit{grid-template-columns:1fr 80px}
+ .basicEdit label:nth-child(2){grid-column:1/-1;grid-row:1}
+ .languageGrid{grid-template-columns:1fr}
+ .languageGrid .wide{grid-column:auto}
+}

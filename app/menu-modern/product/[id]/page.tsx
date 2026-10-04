@@ -1,6 +1,5 @@
-import MenuLanguageSwitcher from "../menu-language-switcher";
-import MenuImage from "../menu-image";
-import {createServerSupabase} from "../../lib/supabase/server";
+import MenuImage from "../../../menu-image";
+import {createServerSupabase} from "../../../../lib/supabase/server";
 export const dynamic="force-dynamic";
 type Cat={id:number;slug:string;title_tr:string};type Sec={id:number;category_id:number;title_tr:string};type Item={id:number;section_id:number;name_tr:string;description_tr:string|null;price:number;tags:string[];image_path:string|null};type Variant={id:number;item_id:number;label_tr:string;price:number;sort_order:number};
 const imageKey=(value:string)=>value.toLocaleLowerCase("tr-TR").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replaceAll("ı","i").replaceAll("ş","s").replaceAll("ğ","g").replaceAll("ü","u").replaceAll("ö","o").replaceAll("ç","c").trim();

@@ -523,3 +523,25 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
  }
  .b12Cards{height:min(15.5vw,270px)}
 }
+
+/* Reference-style hero branding and calls to action */
+.b12HeroNav{position:absolute;z-index:4;top:22px;left:7%;right:7%;display:flex;align-items:flex-start;justify-content:space-between}
+.b12HeroNav>img{width:88px;height:88px;object-fit:contain;background:transparent}
+.b12HeroNav nav{display:flex;align-items:center;gap:54px}
+.b12HeroNav nav>a{color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em}
+.b12HeroNav nav>a.active{padding:14px 0 10px;border-bottom:2px solid #d6a947}
+.b12HeroNav .menuCta{min-width:184px;padding:14px 18px;border:1px solid #c99c3f;border-radius:3px;display:flex;justify-content:space-between;gap:24px;color:#e8bd60}
+.heroMenuCta{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;margin-top:26px;padding:15px 20px;min-width:205px;background:#e2b458;color:#15100a;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.08em;border-radius:2px}
+.heroMenuCta span,.menuCta span{font-size:18px;line-height:1}
+@media(min-width:851px){
+ .b12HeroCopy{top:32%}
+ .b12HeroCopy h1{font-size:clamp(68px,5.9vw,96px)}
+}
+@media(max-width:850px){
+ .b12HeroNav{top:15px;left:20px;right:20px}
+ .b12HeroNav>img{width:66px;height:66px}
+ .b12HeroNav nav{gap:14px}
+ .b12HeroNav nav>a.active{display:none}
+ .b12HeroNav .menuCta{min-width:auto;padding:10px 12px;font-size:10px;gap:12px}
+ .heroMenuCta{margin-top:20px;min-width:180px;padding:13px 16px;font-size:11px}
+}

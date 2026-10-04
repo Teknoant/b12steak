@@ -667,3 +667,80 @@ update public.menu_categories set title_en=title_tr where nullif(btrim(title_en)
 update public.menu_categories set title_ru=title_tr where nullif(btrim(title_ru),'') is null;
 update public.menu_item_variants set label_en=label_tr where nullif(btrim(label_en),'') is null;
 update public.menu_item_variants set label_ru=label_tr where nullif(btrim(label_ru),'') is null;
+
+
+-- EXACT WIX RUSSIAN COPY from supplied Wix reference screenshots - 2026-10-04
+-- Preserve Wix wording/casing/spelling exactly where visible.
+update public.menu_categories set title_ru='ХОЛОДНЫЕ ЗАКУСКИ' where slug='baslangic';
+update public.menu_categories set title_ru='МЯСНОЕ — ГЛАВНЫЕ БЛЮДА' where slug='anayemek';
+update public.menu_categories set title_ru='БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ' where slug='soft';
+update public.menu_categories set title_ru='СЛАДКИЕ ДЕСЕРТЫ' where slug='tatli';
+
+update public.menu_sections set title_ru=case title_tr
+ when 'Başlangıç' then 'ХОЛОДНЫЕ ЗАКУСКИ'
+ when 'Ara Sıcak' then 'ГОРЯЧИЕ БЛЮДА'
+ when 'Salata' then 'САЛАТЫ'
+ when 'Dry Aged Steaks' then 'DRY-AGED СТЕЙК'
+ when 'BEFF' then 'бефф'
+ when 'Köfte' then 'КОТЛЕТЫ'
+ when 'Burger' then 'БУРГЕРЫ'
+ when 'Solo Et' then 'СОЛО МЯСНЫЕ'
+ when 'Soft İçecek' then 'БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ'
+ when 'Tatlı' then 'СЛАДКИЕ ДЕСЕРТЫ'
+ else title_ru end;
+
+update public.menu_items set name_ru='СЫРНАЯ ТАРЕЛКА',description_ru='Сыры Эдам, Пармезан, Ысыплы Черкез, Гауда, Эмменталь (1300&1650 калория)' where name_tr='Peynir Tabağı';
+update public.menu_items set name_ru='ДЕЛИКАТЕСНАЯ ТАРЕЛКА',description_ru='Сыры Эдам, Пармезан, Эзине, Ысыплы Черкез'||E'\n'||'Котто из говядины, Копченая говядина, Ростбиф, Ломтики сушеного мя 775&830 калория)' where name_tr='Şarküteri Tabağı';
+update public.menu_items set name_ru='КАРПАЧЧО ИЗ ГОВЯДИНЫ',description_ru='Тонкие ломтики Бон-Филе, замаринованные в Дижонской горчице и свежих специях, с сыром Пармезан и Бальзамическим соусом.(150&240 калория)' where name_tr='Dana Carpaccio';
+update public.menu_items set name_ru='СТЕЙК ТАРТАР',description_ru='Каперсы, Красный лук, Соленья, Соус Табаско, Дижонская горчица, Яичные желтки, Тосты (153&285 калория)' where name_tr='Steak Tartar';
+update public.menu_items set name_ru='ЧЕДДЕР С КОПЧЕНОСТЯМИ',description_ru='Копченая говядина с соусом Чеддер на обжаренных тостах (536&558 калория)' where name_tr='CHEDDAR FÜME';
+update public.menu_items set name_ru='СПАГЕТТИ 200 гр.',description_ru='СПАГЕТТИ 200 гр (530&582 калория)' where name_tr='SPAGETTİ 200 Gr';
+
+update public.menu_items set name_ru='САЛАТ ИЗ ПОМИДОРОВ',description_ru='Помидоры Черри, красный лук, черные оливки и салатный соус (1600&1625 калория)' where name_tr='Domates Salatası';
+update public.menu_items set name_ru='САЛАТ РОКА',description_ru='Рока, Пармезан и салатный соус (330&368 калория)' where name_tr='Roka Salatası';
+update public.menu_items set name_ru='СРЕДИЗЕМНОМОРСКИЙ САЛАТ',description_ru='Сезонная зелень, авокадо, помидоры Черри и салатный соус(473&513 калория)' where name_tr='Akdeniz Salatası';
+update public.menu_items set name_ru='САЛАТ ТУЛУМ',description_ru='Сезонная зелень, помидоры Черри, сыр Тулум, орехи, виноград, абрикосы, гранат и салатный соус 430&450 калория)' where name_tr='Tulum Salatası';
+update public.menu_items set name_ru='СТЕЙК-САЛАТ',description_ru='Ломтики Бон-Филе, сезонная зелень, помидоры Черри и салатный соус (441&481 калория)' where name_tr='Steak Salata';
+
+update public.menu_items set name_ru='ДАЛЛАС',description_ru='ДАЛЛАС 450-500 гр (1100-1400 калория) , Подается с брокколи, цветной капустой и морковью.(123 калория)' where name_tr='Dallas';
+update public.menu_items set name_ru='ТИ-БОУН',description_ru='ТИ-БОУН 450-500 гр (1200-1500 калория) , Подается с брокколи, цветной капустой и морковью.(123 калория)' where name_tr='T-Bone';
+update public.menu_items set name_ru='НЬЮ-ЙОРК',description_ru='НЬЮ-ЙОРК 350-400 гр (1000-1300 калория), Подается с брокколи, цветной капустой и морковью.(123 калория)' where name_tr='New-York';
+update public.menu_items set name_ru='РИБАЙ',description_ru='РИБАЙ 350 гр (900-1100 калория) , Подается с брокколи, цветной капустой и морковью.(123 калория)' where name_tr='Ribeye';
+update public.menu_items set name_ru='ТАКОЗ БОНФИЛЕ /',description_ru='Широкая нарезка Бон-Филе (250 гр)(550-700 калория)' where name_tr='Takoz Bonfile';
+update public.menu_items set name_ru='БОН-ФИЛЕ ЛОКУМ /',description_ru='Тонкая нарезка Бон-Филе (220 гр)(450-600 калория)' where name_tr='Bonfile Lokum';
+update public.menu_items set name_ru='ШАШЛЫК',description_ru='ШАШЛЫК (300 гр)(750-950 калория)' where name_tr='Şaşlık';
+update public.menu_items set name_ru='ТОНКО НАРЕЗАННЫЙ АНТРЕКОТ',description_ru='ТОНКО НАРЕЗАННЫЙ АНТРЕКОТ (300 гр)(850-1100 калория)' where name_tr='Yaprak Antrikot';
+update public.menu_items set name_ru='БАРАНЬИ ОТБИВНЫЕ',description_ru='БАРАНЬИ ОТБИВНЫЕ (250 гр) (650-850 калория)' where name_tr='Kuzu Pirzola';
+update public.menu_items set name_ru='БОН-ФИЛЕ В СОУСЕ ДЕМИГЛАС',description_ru='БОН-ФИЛЕ В СОУСЕ ДЕМИГЛАС (220 гр)(550-750 калория)' where name_tr='Demi Glace Bonfile';
+update public.menu_items set name_ru='ФИЛЕ БАРАНИНЫ ТЕНДЕРЛОЙН',description_ru='ФИЛЕ БАРАНИНЫ ТЕНДЕРЛОЙН (220 гр)(600-800 калория)' where name_tr='Kuzu Küşleme';
+update public.menu_items set name_ru='ФИЛЕ БАРАНИНЫ ПО КАРСКИ',description_ru='ФИЛЕ БАРАНИНЫ ПО КАРСКИ (250 гр)' where name_tr='Kuzu Sırt (Karski)';
+update public.menu_items set name_ru='БАРАНЬЯ КОРЕЙКА НА КОСТИ',description_ru='БАРАНЬЯ КОРЕЙКА НА КОСТИ (1,3 кг)(3500-4500 калория)' where name_tr='Kuzu Kafes';
+update public.menu_items set name_ru='дана ребра',description_ru='дана ребра (по резервации)' where name_tr='Dilim Asado';
+update public.menu_items set name_ru='ФИЛЕШАТОБРИАН ГОВЯДИНА' where name_tr='File Şato Beef 4 kişilik';
+update public.menu_items set name_ru='ФИЛЕШАТОБРИАН ГОВЯДИНА Корузасы' where name_tr='File Şato Beef 2 kişilik';
+
+update public.menu_items set name_ru='КОТЛЕТЫ КЛАССИЧЕСКИЕ',description_ru='Kızarmış Patates İle Servis edilir.(900-1100 калория)' where name_tr='Kasap Köfte';
+update public.menu_items set name_ru='КОТЛЕТЫ С СЫРОМ ЧЕДДЕР',description_ru='Kızarmış Patates İle Servis edilir. (1100-1300 калория)' where name_tr='Cheddar Köfte';
+update public.menu_items set name_ru='ЧИЗБУРГЕР',description_ru='ЧИЗБУРГЕР (180 гр)'||E'\n'||'Котлета для бургеров, сыр Чеддер, соус Дип, помидоры, маринованные огурцы (1000-1200 калория)' where name_tr='Cheese Burger';
+update public.menu_items set name_ru='МЕКСИКАНСКИЙ БУРГЕР',description_ru='МЕКСИКАНСКИЙ БУРГЕР (180 гр)'||E'\n'||'Котлета для бургеров, сыр Чеддер, перец Халапеньо, острый Мексиканский соус, помидоры, маринованные огурцы (1100-1300 калория)' where name_tr='Mexican Burger';
+update public.menu_items set name_ru='БУРГЕР ИЗ СТЕЙКА ГОВЯДИНЫ',description_ru='БУРГЕР ИЗ СТЕЙКА ГОВЯДИНЫ (150 гр)'||E'\n'||'Тонко нарезанные ломтики стейка говядины, соус Дип, помидоры, маринованные огурцы (900-1100 калория)' where name_tr='Lokum Burger';
+update public.menu_items set name_ru='БЕКОН ЧИЗБУРГЕР',description_ru='БЕКОН ЧИЗБУРГЕР (180 гр)'||E'\n'||'Котлета для бургеров, сыр Чеддер, говяжий бекон, соус Дип, помидоры, маринованные огурцы (1200-1400 калория)' where name_tr='Bacon Cheese Burger';
+update public.menu_items set name_ru='СОЛО 1',description_ru='1 Тонко нарезанный стейк'||E'\n'||'1 Котлета с сыром Чеддер'||E'\n'||'1 Баранья Корейка'||E'\n'||'1 Колбаска Суджук (1500-1800 калория)' where name_tr='Solo 1';
+update public.menu_items set name_ru='СОЛО 2',description_ru='1 Говяжий антрекот без кости'||E'\n'||'1 Филе-Тендерлойн'||E'\n'||'1 Классическая котлета (1600-2000 калория)' where name_tr='Solo 2';
+
+update public.menu_items set name_ru='ВОДА',description_ru='ВОДА 0,75 МЛ' where name_tr='SU';
+update public.menu_items set name_ru='St.Pellegrino',description_ru='МИНЕРАЛЬНАЯ ВОДА ST.PELLEGRINO (750 мл)' where name_tr='S.Pellegrino';
+update public.menu_items set name_ru='ГАЗИРОВАННАЯ ВОДА',description_ru='ГАЗИРОВАННАЯ ВОДА' where name_tr='Soda';
+update public.menu_items set name_ru='ШАЛГАМ 330 ML',description_ru='ШАЛГАМ 1 LT - 220 TL'||E'\n'||'ШАЛГАМ (острый напиток из красной репы)' where name_tr='Şalgam Suyu 330 ml';
+update public.menu_items set name_ru='АЙРАН',description_ru='АЙРАН' where name_tr='Ayran';
+update public.menu_items set name_ru='COCA COLA',description_ru='CocaCola / Light / Zero' where name_tr='COCA COLA';
+update public.menu_items set name_ru='Sprite',description_ru='Sprite' where name_tr='Sprite';
+update public.menu_items set name_ru='Fanta',description_ru='Fanta' where name_tr='Fanta';
+update public.menu_items set name_ru='CAPPY ФРУКТОВЫЕ НАПИТКИ',description_ru='CAPPY ФРУКТОВЫЕ НАПИТКИ, Вишня, Персик' where name_tr='Cappy Meyve Suyu';
+update public.menu_items set name_ru='FUSE ЧАЙ',description_ru='FUSE ЧАЙ (лимон/персик)' where name_tr='FUSE TEA';
+update public.menu_items set name_ru='Redbull',description_ru='Redbull' where name_tr='Redbull';
+update public.menu_items set name_ru='СВЕЖЕВЫЖАТЫЙ АПЕЛЬСИНОВЫЙ СОК',description_ru='СВЕЖЕВЫЖАТЫЙ АПЕЛЬСИНОВЫЙ СОК' where name_tr='Taze Portakal Suyu';
+update public.menu_items set name_ru='Uludağ сода',description_ru='сода' where name_tr='Uludağ Soda';
+
+update public.menu_items set name_ru='ТИРАМИСУ',description_ru='ТИРАМИСУ (390 калория)' where name_tr='Tiramisu';
+update public.menu_items set name_ru='Katmer',description_ru='4 person (1800 калория)' where name_tr='Katmer';

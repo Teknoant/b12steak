@@ -207,3 +207,56 @@ body{background:#fff}
  .menuLanguage{width:100%;margin:0 0 18px}
  .menuLanguage select{font-size:13px}
 }
+
+/* Professional compact admin workspace */
+.adminPage{max-width:1180px;margin:0 auto;padding:28px 24px 70px;background:#f5f5f3;min-height:100vh;color:#171717}
+.adminBar{background:#111;color:#fff;border-radius:16px;padding:20px 24px;box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.adminBar h1{font-family:Arial,Helvetica,sans-serif;font-size:26px;letter-spacing:.02em;margin:3px 0}
+.adminBar .eyebrow{color:#d5b07a}
+.adminBar .ghostBtn{border-color:#444;background:#1d1d1d;color:#fff;border-radius:9px}
+.adminSettings,.adminNewProduct{margin-top:16px;background:#fff;border:1px solid #e3e3df;border-radius:12px;overflow:hidden}
+.adminSettings>summary,.adminNewProduct>summary{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;list-style:none}
+.adminSettings>summary::-webkit-details-marker,.adminNewProduct>summary::-webkit-details-marker{display:none}
+.adminSettings>summary span,.adminNewProduct>summary span{font-size:11px;color:#777}
+.adminTaxonomy{margin:0;padding:0 16px 16px;gap:12px}
+.adminTaxonomy>div{border-radius:10px;padding:16px}
+.adminEditor{margin:0;border:0;padding:18px}
+.adminProducts{margin-top:16px;border:1px solid #e3e3df;border-radius:14px;padding:18px;background:#fff}
+.adminSectionTitle{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:14px}
+.adminSectionTitle h2{font-size:22px;margin:2px 0 0}
+.adminSectionTitle>span{font-size:11px;color:#777;background:#f3f3f0;border-radius:999px;padding:6px 10px}
+.adminTools{display:grid;grid-template-columns:minmax(260px,1fr) 220px;gap:10px;padding:12px;background:#f6f6f3;border-radius:10px;margin-bottom:10px}
+.adminTools label{font-size:10px;color:#666}
+.adminTools label span{display:block;margin:0 0 5px}
+.adminTools input,.adminTools select{width:100%;height:38px;border:1px solid #d6d6d1;border-radius:8px;background:#fff;padding:0 11px;font:inherit;font-size:12px}
+.productEdit{border:1px solid #e8e8e4;border-radius:10px;margin:7px 0;overflow:hidden;background:#fff}
+.productEdit summary{padding:9px 11px;align-items:center}
+.productSummaryMain{display:flex;align-items:center;gap:11px;min-width:0}
+.productSummaryMain img,.productNoImage{width:46px;height:46px;border-radius:7px;object-fit:cover;background:#111;color:#d5b07a;display:flex;align-items:center;justify-content:center;font:700 11px Georgia,serif;flex:0 0 auto}
+.productSummaryMain>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0}
+.productSummaryMain b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.productSummaryMain small{font-size:10px;color:#777}
+.productSummaryMeta{display:flex;align-items:center;gap:10px;margin-left:auto}
+.productSummaryMeta strong{font-size:13px;white-space:nowrap}
+.productSummaryMeta em{font-style:normal;font-size:9px;font-weight:700;border-radius:999px;padding:5px 8px}
+.statusLive{background:#e8f6ec;color:#28723c}
+.statusOff{background:#f3e9e9;color:#8b3434}
+.productEdit[open]{border-color:#c9b07c;box-shadow:0 6px 22px rgba(0,0,0,.05)}
+.productEdit[open]>summary{background:#faf8f2;border-bottom:1px solid #eee9dc}
+.editForm{padding:16px}
+.variantAdmin{margin:0 16px;padding:16px 0}
+.imageUpload,.deleteForm{margin-left:16px;margin-right:16px}
+.itemForm input,.itemForm select,.itemForm textarea,.variantAdmin input,.variantAdmin button,.imageUpload input,.imageUpload button{border-radius:7px}
+.primaryBtn{border-radius:8px}
+@media(max-width:700px){
+ .adminPage{padding:12px 10px 50px}
+ .adminBar{padding:16px;border-radius:12px}
+ .adminBar h1{font-size:21px}
+ .adminTools{grid-template-columns:1fr}
+ .adminProducts{padding:11px}
+ .productEdit summary{flex-direction:row}
+ .productSummaryMeta{flex-direction:column;align-items:flex-end;gap:4px}
+ .productSummaryMain img,.productNoImage{width:42px;height:42px}
+ .productSummaryMain b{max-width:150px}
+ .adminSettings>summary span,.adminNewProduct>summary span{display:none}
+}

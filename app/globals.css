@@ -545,3 +545,10 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
  .b12HeroNav .menuCta{min-width:auto;padding:10px 12px;font-size:10px;gap:12px}
  .heroMenuCta{margin-top:20px;min-width:180px;padding:13px 16px;font-size:11px}
 }
+
+/* Align hero branding to one reference grid */
+@media(min-width:851px){
+ .b12HeroNav{left:8.2%;right:8.2%;top:24px}
+ .b12HeroNav>img{width:92px;height:92px;object-fit:contain;object-position:left top}
+ .b12HeroCopy{left:8.2%;top:32%}
+}

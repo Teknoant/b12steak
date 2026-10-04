@@ -161,6 +161,17 @@ export default async function ModernMenu({searchParams}:{searchParams:Promise<{m
  const allItems=(items||[]) as Item[];const allVariants=(variants||[]) as Variant[];
  const activeItems=sections.flatMap(s=>allItems.filter(i=>i.section_id===s.id));
  const hero=activeItems.find(i=>itemImage(i))||activeItems[0];
+ const heroByCategory:Record<string,string>={
+  "baslangic":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
+  "ana-yemek":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
+  "anayemek":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
+  "soft":"/images/site/b12-hero-background.png",
+  "tatli":"/images/site/b12-story-background.png",
+  "alkollu":"/images/site/lezzet.png",
+  "viski":"/images/site/atmosfer.png",
+  "sarap":"/images/site/lezzet.png"
+ };
+ const heroImage=heroByCategory[active?.slug||""]||(hero&&itemImage(hero));
  return <main className="modernMenu">
   <header className="modernTop">
    <button className="modernHamb" aria-label="Menü">☰</button>
@@ -168,7 +179,7 @@ export default async function ModernMenu({searchParams}:{searchParams:Promise<{m
    <div className="modernTools"><span className="modernSearch">⌕</span><span className="modernLang">🇹🇷 <b>TR</b>⌄</span></div>
   </header>
   <section className="modernHero">
-   {hero&&itemImage(hero)&&<MenuImage src={itemImage(hero)!} alt={active?.title_tr||"Menü"}/>}
+   {heroImage&&<MenuImage src={heroImage} alt={active?.title_tr||"Menü"}/>}
    <div className="modernHeroShade"/><div className="modernHeroText"><h1>{active?.title_tr||"Menü"}</h1><p>Özenle seçilmiş lezzetler, usta dokunuşlarla...</p></div>
   </section>
   <nav className="modernCategories">{categories.map(c=><a key={c.id} className={active?.id===c.id?"active":""} href={"/menu-modern?menu="+c.slug}>{c.title_tr}</a>)}</nav>

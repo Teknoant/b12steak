@@ -440,3 +440,12 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
  .b12Cards{height:auto;grid-template-columns:1fr 1fr}
  .b12Cards figure{height:210px}
 }
+
+/* B12 story artwork supplied separately */
+.b12Story{
+ background-image:linear-gradient(rgba(5,4,3,.08),rgba(5,4,3,.08)),url("/images/site/b12-story-background.png");
+ background-size:cover;
+ background-position:center;
+ background-repeat:no-repeat;
+}
+.b12Bull{display:none!important}

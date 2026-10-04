@@ -12,11 +12,11 @@ export default function Home(){return <main className="b12Home">
 </section>
 <section className="b12Story">
  <div className="b12Bull">B12</div>
- <div className="b12StoryText"><p>BİZ KİMİZ</p><h2>BİR LEZZET HİKAYESİ</h2><div>Kasap Ali ve B12 markalarının yaratıcısı Ali Yüzüldü, mesleğine 1993'te Kahramanmaraş'ta kasap çırağı olarak başladı. Yıllar içinde edindiği tecrübe ve tutkuyla 2012'de “Kasap Ali” markasını hayata geçirdi, 2016'da ise bu deneyimi B12 Steak &amp; Kasap ile bir üst seviyeye taşıdı.</div></div>
+ <div className="b12StoryText"><p>BİZ KİMİZ</p><h2>BİR LEZZET HİKAYESİ</h2><div>Kasap Ali ve B12 markalarının yaratıcısı Ali Yüzüldü, mesleğine 1993'te Kahramanmaraş'ta kasap çırağı olarak başladı. Yıllar içinde edindiği tecrübe ve tutkuyla 2012'de “Kasap Ali” markasını hayata geçirdi, 2016'da ise bu deneyimi B12 Steak &amp; Kasap ile bir üst seviyeye taşıdı.</div><a className="storyCta" href="/menu">DAHA FAZLA <span>→</span></a></div>
  <div className="b12Cards">
   <figure><img src="/images/menu/ana-yemek/dry-aged/T-BONE.webp" alt="Kalite"/><figcaption><b>KALİTE</b><span>Özenle seçilen etler</span></figcaption></figure>
   <figure><img src="/images/menu/ana-yemek/beef/Bonfile-Lokum.webp" alt="Ustalık"/><figcaption><b>USTALIK</b><span>Yılların deneyimi</span></figcaption></figure>
-  <figure><img src="/images/menu/ana-yemek/dry-aged/ribeye.webp" alt="B12 Steak"/><figcaption><b>STEAK</b><span>Kasap kültürü</span></figcaption></figure>
+  <figure><img src="/images/site/b12-hero-background.png" alt="Atmosfer"/><figcaption><b>ATMOSFER</b><span>Sıcak ve keyifli ortam</span></figcaption></figure>
   <figure><img src="/images/menu/salatalar/tulumsalata.webp" alt="Lezzet"/><figcaption><b>LEZZET</b><span>Unutulmaz deneyim</span></figcaption></figure>
  </div>
 </section>

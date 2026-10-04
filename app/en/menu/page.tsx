@@ -10,7 +10,7 @@ const localImage=(name:string)=>{
   "tulum salatasi":"/images/menu/salatalar/tulumsalata.webp",
   "dallas":"/images/menu/ana-yemek/dry-aged/Dallas.webp","t-bone":"/images/menu/ana-yemek/dry-aged/T-BONE.webp","new-york":"/images/menu/ana-yemek/dry-aged/newyork.webp","ribeye":"/images/menu/ana-yemek/dry-aged/ribeye.webp",
   "takoz bonfile":"/images/menu/ana-yemek/beef/Takoz-Bonfile.webp","bonfile lokum":"/images/menu/ana-yemek/beef/Bonfile-Lokum.webp","şaşlık":"/images/menu/ana-yemek/beef/┼Şa┼şl─▒k.webp","yaprak antrikot":"/images/menu/ana-yemek/beef/yaprakantikot.webp","kuzu pirzola":"/images/menu/ana-yemek/beef/Kuzu-Pirzola.webp","kuzu küşleme":"/images/menu/ana-yemek/beef/Kuzu-K├╝┼şleme.webp","kuzu sırt (karski)":"/images/menu/ana-yemek/beef/karski.webp","kuzu kafes":"/images/menu/ana-yemek/beef/Kuzu-Kafes.webp","dilim asado":"/images/menu/ana-yemek/beef/dana-asado.webp","demi glace bonfile":"/images/menu/ana-yemek/beef/Takoz-Bonfile-edited.webp",
-  "file şato beef 4 kişilik":"/images/menu/ana-yemek/beef/satobiryan.webp","file şato beef 2 kişilik":"/images/menu/ana-yemek/beef/satobiryan.webp",
+  "file şato beef 4 kişilik":"/images/menu/ana-yemek/beef/file şato 2-4 (2).jpg","file şato beef 2 kişilik":"/images/menu/ana-yemek/beef/file şato 2-4 (2).jpg",
   "cheddar köfte":"/images/menu/kofte/cheddar-k├Âfte-edited.webp","cheese burger":"/images/menu/burger/chesse-burger.webp",
   "mexican burger":"/images/menu/burger/chesse-burger.webp",
   "bacon cheese burger":"/images/menu/burger/chesse-burger.webp","lokum burger":"/images/menu/burger/Lokum-Dana-Burger.webp","solo 1":"/images/menu/solo/Solo1.webp","solo 2":"/images/menu/solo/solo2.webp",

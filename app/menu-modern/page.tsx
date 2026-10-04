@@ -1,5 +1,6 @@
 import MenuLanguageSwitcher from "../menu-language-switcher";
 import MenuImage from "../menu-image";
+import ModernMenuHeader from "./modern-menu-header";
 import {createServerSupabase} from "../../lib/supabase/server";
 export const dynamic="force-dynamic";
 type Cat={id:number;slug:string;title_tr:string};type Sec={id:number;category_id:number;title_tr:string};type Item={id:number;section_id:number;name_tr:string;description_tr:string|null;price:number;tags:string[];image_path:string|null};type Variant={id:number;item_id:number;label_tr:string;price:number;sort_order:number};
@@ -173,11 +174,7 @@ export default async function ModernMenu({searchParams}:{searchParams:Promise<{m
  };
  const heroImage=heroByCategory[active?.slug||""]||(hero&&itemImage(hero));
  return <main className="modernMenu">
-  <header className="modernTop">
-   <button className="modernHamb" aria-label="Menü">☰</button>
-   <a className="modernLogo" href="/"><img src="/images/site/logo/logo-siyah.webp" alt="B12 Steak"/></a>
-   <div className="modernTools"><span className="modernSearch">⌕</span><span className="modernLang">🇹🇷 <b>TR</b>⌄</span></div>
-  </header>
+  <ModernMenuHeader menu={active?.slug}/>
   <section className="modernHero">
    {heroImage&&<img className="modernHeroArtwork" src={heroImage} alt={active?.title_tr||"Menü"}/>}
    <div className="modernHeroShade"/><div className="modernHeroText"><h1>{active?.title_tr||"Menü"}</h1><p>Özenle seçilmiş lezzetler, usta dokunuşlarla...</p></div>

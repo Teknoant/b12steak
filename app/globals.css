@@ -641,3 +641,12 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
 @media(max-width:850px){
  .storyCta{display:inline-flex;align-items:center;gap:24px;margin-top:18px;padding:11px 14px;border:1px solid #d3a640;color:#fff;text-decoration:none;font-size:11px}
 }
+
+/* Keep story copy clear of the bull artwork */
+@media(min-width:851px){
+ .b12StoryText{
+   padding-left:15%;
+   padding-right:2%;
+   transform:translateX(42px);
+ }
+}

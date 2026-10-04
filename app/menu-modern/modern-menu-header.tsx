@@ -15,8 +15,8 @@ export default function ModernMenuHeader({menu}:{menu?:string}){
      <summary>🇹🇷 <b>TR</b><span>⌄</span></summary>
      <div className="modernLangMenu">
       <a className="active" href={"/menu-modern"+q}>🇹🇷 Türkçe</a>
-      <a href={"/en/menu"+q}>🇬🇧 English</a>
-      <a href={"/ru/menu"+q}>🇷🇺 Русский</a>
+      <a href={"/en/menu-modern"+q}>🇬🇧 English</a>
+      <a href={"/ru/menu-modern"+q}>🇷🇺 Русский</a>
      </div>
     </details>
    </div>

@@ -1,0 +1,186 @@
+import MenuLanguageSwitcher from "../menu-language-switcher";
+import MenuImage from "../menu-image";
+import {createServerSupabase} from "../../lib/supabase/server";
+export const dynamic="force-dynamic";
+type Cat={id:number;slug:string;title_tr:string};type Sec={id:number;category_id:number;title_tr:string};type Item={id:number;section_id:number;name_tr:string;description_tr:string|null;price:number;tags:string[];image_path:string|null};type Variant={id:number;item_id:number;label_tr:string;price:number;sort_order:number};
+const imageKey=(value:string)=>value.toLocaleLowerCase("tr-TR").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replaceAll("ı","i").replaceAll("ş","s").replaceAll("ğ","g").replaceAll("ü","u").replaceAll("ö","o").replaceAll("ç","c").trim();
+const localImage=(name:string)=>{
+ const n=imageKey(name);
+ const images:Record<string,string>={
+  "peynir tabağı":"/images/menu/baslangic/peynir-taba─ş─▒.webp",
+  "şarküteri tabağı":"/images/menu/baslangic/┼şarkuteri-taba─ş─▒.webp",
+  "dana carpaccio":"/images/menu/baslangic/danakarpa├ğyo.webp",
+  "steak tartar":"/images/menu/baslangic/Steak-tartar.webp",
+  "domates":"/images/menu/salatalar/Domates-salatas─▒.webp",
+  "roka":"/images/menu/salatalar/Roka-Salatas─▒.webp",
+  "akdeniz":"/images/menu/salatalar/Akdenizsalata.webp",
+  "tulum":"/images/menu/salatalar/tulumsalata.webp",
+  "steak salata":"/images/menu/salatalar/Steak-salata.webp",
+  "domates salatasi":"/images/menu/salatalar/Domates-salatas─▒.webp",
+  "roka salatasi":"/images/menu/salatalar/Roka-Salatas─▒.webp",
+  "akdeniz salatasi":"/images/menu/salatalar/Akdenizsalata.webp",
+  "tulum salatasi":"/images/menu/salatalar/tulumsalata.webp",
+  "dallas":"/images/menu/ana-yemek/dry-aged/Dallas.webp",
+  "t-bone":"/images/menu/ana-yemek/dry-aged/T-BONE.webp",
+  "new-york":"/images/menu/ana-yemek/dry-aged/newyork.webp",
+  "ribeye":"/images/menu/ana-yemek/dry-aged/ribeye.webp",
+  "takoz bonfile":"/images/menu/ana-yemek/beef/Takoz-Bonfile.webp",
+  "bonfile lokum":"/images/menu/ana-yemek/beef/Bonfile-Lokum.webp",
+  "şaşlık":"/images/menu/ana-yemek/beef/┼Şa┼şl─▒k.webp",
+  "yaprak antrikot":"/images/menu/ana-yemek/beef/yaprakantikot.webp",
+  "kuzu pirzola":"/images/menu/ana-yemek/beef/Kuzu-Pirzola.webp",
+  "kuzu küşleme":"/images/menu/ana-yemek/beef/Kuzu-K├╝┼şleme.webp",
+  "kuzu sırt (karski)":"/images/menu/ana-yemek/beef/karski.webp",
+  "kuzu kafes":"/images/menu/ana-yemek/beef/Kuzu-Kafes.webp",
+  "dilim asado":"/images/menu/ana-yemek/beef/dana-asado.webp",
+  "demi glace bonfile":"/images/menu/ana-yemek/beef/Takoz-Bonfile-edited.webp",
+  "file şato beef 4 kişilik":"/images/menu/ana-yemek/beef/file şato 2-4 (2).jpg",
+  "file şato beef 2 kişilik":"/images/menu/ana-yemek/beef/file şato 2-4 (2).jpg",
+  "cheddar köfte":"/images/menu/kofte/cheddar-k├Âfte-edited.webp",
+  "cheese burger":"/images/menu/burger/chesse-burger.webp",
+  "mexican burger":"/images/menu/burger/chesse-burger.webp",
+  "bacon cheese burger":"/images/menu/burger/chesse-burger.webp",
+  "lokum burger":"/images/menu/burger/Lokum-Dana-Burger.webp",
+  "solo 1":"/images/menu/solo/Solo1.webp",
+  "solo 2":"/images/menu/solo/solo2.webp",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  "s.pellegrino":"/images/menu/soft/St.Pellegrino.webp","su":"/images/menu/soft/su.jpg","şalgam suyu 330 ml":"/images/menu/soft/şalgam.jpg","ayran":"/images/menu/soft/ayran.jpg","sprite":"/images/menu/soft/sprite.jpg","coca cola":"/images/menu/soft/cola.jpg","fanta":"/images/menu/soft/fanta.jpg","cappy meyve suyu":"/images/menu/soft/cappy.jpg","fuse tea":"/images/menu/soft/fusetea.jpg","redbull":"/images/menu/soft/redbull.jpg","taze portakal suyu":"/images/menu/soft/portakal.jpg",
+  "soda":"/images/menu/soft/Soda.webp",
+  "uludağ soda":"/images/menu/soft/uludag.webp",
+  "tiramisu":"/images/menu/tatli/Tiramisu-edited.webp",
+  "katmer":"/images/menu/tatli/katmer.jpeg",
+  "cheddar fume":"/images/menu/sicak/cheddar-f├╝me.webp",
+  "spagetti 200 gr":"/images/menu/sicak/spaketti.webp",
+  "kasap kofte":"/images/menu/kofte/kasap-k├Âfte-edited.webp"
+,
+  "olmeca":"/images/menu/alkollu/tekila/olmeca-blanco.webp",
+  "smirnoff red":"/images/menu/alkollu/votka/smirnof-edited-2.webp",
+  "absolut":"/images/menu/alkollu/votka/99033-absolut-vodka-1L-40-vol.webp",
+  "belvedere":"/images/menu/alkollu/votka/belvede.jpg",
+  "beefeater":"/images/menu/alkollu/cin/gin-beefeater-1l.webp",
+  "gordon's":"/images/menu/alkollu/cin/gordon-s-70-cl.webp",
+  "campari":"/images/menu/alkollu/likor/campari2.webp",
+  "baileys":"/images/menu/alkollu/likor/baileys-original-irish-cream-1.webp",
+  "jagermeister":"/images/menu/alkollu/likor/Jagermeister.jpg",
+  "grappa":"/images/menu/alkollu/likor/ci-candolini-grappa-bianca-29531b1bfcfc19ad.webp",
+  "limoncello":"/images/menu/alkollu/likor/il-tramonto-limoncello-750ml.webp",
+  "miller 33 cl":"/images/menu/alkollu/bira/miller.webp",
+  "efes pilsen 33 cl":"/images/menu/alkollu/bira/efes.webp",
+  "efes malt 50 cl":"/images/menu/alkollu/bira/efes-malt.webp",
+  "bomonti filtresiz 50 cl":"/images/menu/alkollu/bira/bomonti.webp",
+  "corona 33 cl":"/images/menu/alkollu/bira/CORONA.webp",
+  "beylerbeyi gobek":"/images/menu/alkollu/raki/beylerbeyi-gobek-70cl-edited.webp",
+  "yeni raki":"/images/menu/alkollu/raki/yeni-rak─▒.webp",
+  "yeni raki- yeni seri":"/images/menu/alkollu/raki/YENİ RAKI- YENi SERİ.png",
+  "yeni raki- ala":"/images/menu/alkollu/raki/ala.webp",
+  "tekirdag rakisi":"/images/menu/alkollu/raki/tekirdas─ş.webp",
+  "tekirdag rakisi gold":"/images/menu/alkollu/raki/gold.webp",
+  "gold efe raki":"/images/menu/alkollu/raki/goldefe.webp",
+  "beylerbeyi terra gold":"/images/menu/alkollu/raki/TERRA.webp",
+  "beylerbeyi mavi":"/images/menu/alkollu/raki/BEYLERBEYI-RAKI-MAVI-70CL.webp",
+  "klup raki":"/images/menu/alkollu/raki/Kulup-Raki-700ml-800x1000-edited.webp",
+  "sari zeybek 3 mese 70 cl":"/images/menu/alkollu/raki/sari-zeybek-3-me┼şe-edited.webp",
+  "mercan 70 cl":"/images/menu/alkollu/raki/mercan.webp",
+  "chivas regal 12. y. o":"/images/menu/viski/chivas-12-01.webp",
+  "chivas regal 18. y. o":"/images/menu/viski/chivas-regal-18yr-750ml.webp",
+  "johnnie walker black label":"/images/menu/viski/32699-0w600h600-Johnnie-Walker-Black-Label-Whisky-Sample-Bottle.webp",
+  "bulleit bourbon":"/images/menu/viski/Bulleit-Bourbon-Frontier-Whiskey.webp",
+  "jack daniels tennessee":"/images/menu/viski/ci-jack-daniels-old-no-7-92707d5e737cf4ac.webp",
+  "jameson irish":"/images/menu/viski/Jameson.jpg",
+  "glenmorangie 10 y.o. %40":"/images/menu/viski/glenmorangie-10-yo-original-highland-single-malt-scotch-whisky-70cl-40-abv-temp.webp",
+  "talisker 10 y.o. %45,8":"/images/menu/viski/Talisker-10-Year-Scotch-200ML-2.webp",
+  "the macallan 12 y.o. sherry oak cask":"/images/menu/viski/The-Macallan-12-year.webp",
+  "talisker 10. y.o. %45,8":"/images/menu/viski/Talisker-10-Year-Scotch-200ML-2.webp",
+  "the glenlivet 18. y.o. %43":"/images/menu/viski/glenlivet-single-malt-scotch-18-yr-speyside.webp",
+  "suvla / cabarnet sauvignon-merlot":"/images/menu/sarap/suvla-cabernet-sauvignon-merlot-933514-1200x1200.webp",
+  "suvla / okuzgozu/bogazkere":"/images/menu/sarap/suvla-okuzgozu-440905-600.webp",
+  "kavaklidere / egeo merlot":"/images/menu/sarap/egeo-merlot.webp",
+  "oguz vigna nord":"/images/menu/sarap/CALROSSO.webp",
+  "consensus / shiraz & cabernet sauvignon & merlot":"/images/menu/sarap/LA-CONSENSUS-KIRMIZI-2015-IZMIR.webp",
+  "ament blend":"/images/menu/sarap/PORTA-CAELI-AMENT-BLEND-2019-ECEABAT-edited.webp",
+  "yedi bilgeler pythgoras":"/images/menu/sarap/Yedi-Bilgeler-Pythagoras-kirmizi-sarap.webp",
+  "chamlija nevi sahsina munasir":"/images/menu/sarap/chamlija-nevi-sahsina-munhasir-855975-ca91d839-5157-45bc-9858-29baff7a758b.webp",
+  "kavaklidere / sultaniye y.tatli":"/images/menu/sarap/yaritatli-sultaniye.webp",
+  "tomassi soave classico":"/images/menu/sarap/Tomassi-Soave.webp",
+  "chablis le finage aoc":"/images/menu/sarap/chablis.webp",
+  "roc de i'abbaye sancerre blanc":"/images/menu/sarap/sancerre.webp",
+  "yedi bilgeler khilon":"/images/menu/sarap/7-bilgeler-khilon-premium-rotwein.webp",
+  "yedi bilgeler anaxagoras":"/images/menu/sarap/yedi-bilgeler-anaxagoras-chardonnay-980740.webp",
+  "chamlija quartz fume":"/images/menu/sarap/chamlija-quartz-fume.webp",
+  "kavaklidere / ancyra blush":"/images/menu/sarap/ancyra-blush.webp",
+  "bodvar cotes de pronence":"/images/menu/sarap/BODVAR.webp",
+  "arjantin / kaiken reserva malbec":"/images/menu/sarap/kaiken-malbec-reserva-2016-mendoza-argentina.webp",
+  "fransa / aoc, bourgogne, jaffelin pinot noir":"/images/menu/sarap/jaffelin-vin-de-france-pinot-noir-scaled-510x631.webp",
+  "muga reserva":"/images/menu/sarap/muga.webp",
+  "marchesi di barolo & serrragilli barbaresco":"/images/menu/sarap/serragrilli-barbaresco.webp",
+  "tomassi amarone della valpolicella classico":"/images/menu/sarap/Tommasi-Amarone-Classico-Since1902.webp",
+  "suvla / chardonnay":"/images/menu/sarap/SUVLA.webp",
+  "kavaklidere / egeo cabernet sauvignon":"/images/menu/sarap/Egeo Cabernet Sauvignon.png",
+  "kavaklidere / egeo syrah":"/images/menu/sarap/Egeo Syrah.png",
+  "kavaklidere / prestige kalecik karasi":"/images/menu/sarap/Prestige Kalecik Karası.png",
+  "selection / okuzgozu-bogazkere":"/images/menu/sarap/Öküzgözü-Bogazkere.png",
+  "kavaklidere / pendore syrah":"/images/menu/sarap/Pendore Syrah.png",
+  "kavaklidere / ancyra okuzgozu":"/images/menu/sarap/Ancyra Öküzgözü.png",
+  "kavaklidere / ancyra merlot":"/images/menu/sarap/Ancyra Merlot.png",
+  "kavaklidere / selection, emir& narince":"/images/menu/sarap/Selection, Emir& Narince.png",
+  "kavaklidere / misket":"/images/menu/sarap/Misket.png",
+  "kavaklidere / ancyra narince":"/images/menu/sarap/Ancyra Narince.png",
+  "suvla sauvignon blanc & semillon":"/images/menu/sarap/Suvla Sauvignon Blanc.JPG",
+  "marchesi di barolo & gavi di gavi":"/images/menu/sarap/Marchesi Dı Barolo.jpg",
+  "sartori pinot grigio":"/images/menu/sarap/Sartori Pinot Grigio.png",
+  "sili / casabalnca valley montes, merlot":"/images/menu/sarap/Şili.png",
+  "italya / docg, chanti la terre":"/images/menu/sarap/İtalya.png",
+  "sili / casabalnca valley montes, cabernet sauvignon":"/images/menu/sarap/Casabalnca Valley Montes, Cabernet Sauvignon.png",
+  "maison kavaklidere / la croix lortique":"/images/menu/sarap/La Croix Lortique.png",
+  "maison kavaklidere / la folie":"/images/menu/sarap/La Folie.jpg",
+ };
+ return images[n]||Object.entries(images).find(([key])=>imageKey(key)===n)?.[1]||null;
+};
+const itemImage=(i:Item)=>i.image_path?process.env.NEXT_PUBLIC_SUPABASE_URL+"/storage/v1/object/public/menu-images/"+i.image_path:localImage(i.name_tr);
+const money=(v:number)=>new Intl.NumberFormat("tr-TR",{style:"currency",currency:"TRY",maximumFractionDigits:0}).format(Number(v));
+
+export default async function ModernMenu({searchParams}:{searchParams:Promise<{menu?:string}>}){
+ const sp=await searchParams;const db=await createServerSupabase();
+ const [{data:cats},{data:secs},{data:items},{data:variants}]=await Promise.all([
+  db.from("menu_categories").select("*").eq("is_active",true).order("sort_order"),
+  db.from("menu_sections").select("*").eq("is_active",true).order("sort_order"),
+  db.from("menu_items").select("*").eq("is_active",true).order("sort_order"),
+  db.from("menu_item_variants").select("*").eq("is_active",true).order("sort_order")
+ ]);
+ const categories=(cats||[]) as Cat[];const active=categories.find(c=>c.slug===sp.menu)||categories[0];
+ const sections=((secs||[]) as Sec[]).filter(s=>s.category_id===active?.id);
+ const allItems=(items||[]) as Item[];const allVariants=(variants||[]) as Variant[];
+ const activeItems=sections.flatMap(s=>allItems.filter(i=>i.section_id===s.id));
+ const hero=activeItems.find(i=>itemImage(i))||activeItems[0];
+ return <main className="modernMenu">
+  <header className="modernTop">
+   <button className="modernHamb" aria-label="Menü">☰</button>
+   <a className="modernLogo" href="/"><img src="/images/site/logo/logo-siyah.webp" alt="B12 Steak"/></a>
+   <div className="modernTools"><span className="modernSearch">⌕</span><span className="modernLang">🇹🇷 <b>TR</b>⌄</span></div>
+  </header>
+  <section className="modernHero">
+   {hero&&itemImage(hero)&&<MenuImage src={itemImage(hero)!} alt={active?.title_tr||"Menü"}/>}
+   <div className="modernHeroShade"/><div className="modernHeroText"><h1>{active?.title_tr||"Menü"}</h1><p>Özenle seçilmiş lezzetler, usta dokunuşlarla...</p></div>
+  </section>
+  <nav className="modernCategories">{categories.map(c=><a key={c.id} className={active?.id===c.id?"active":""} href={"/menu-modern?menu="+c.slug}>{c.title_tr}</a>)}</nav>
+  <section className="modernContent">
+   {sections.map((s,si)=><section className="modernSection" key={s.id}>
+    {sections.length>1&&<h2>{s.title_tr}</h2>}
+    {allItems.filter(i=>i.section_id===s.id).map(i=>{const vs=allVariants.filter(v=>v.item_id===i.id);const price=vs.length?Math.min(...vs.map(v=>Number(v.price))):Number(i.price);return <a className="modernDish" href={"/menu-modern/product/"+i.id} key={i.id}>
+      <div className="modernDishImg">{itemImage(i)?<MenuImage src={itemImage(i)!} alt={i.name_tr}/>:<span>B12</span>}</div>
+      <div className="modernDishInfo"><h3>{i.name_tr}</h3>{i.description_tr&&<p>{i.description_tr}</p>}{i.tags?.length>0&&<small>{i.tags.slice(0,2).join(" · ")}</small>}<strong>{money(price)}</strong></div>
+      <span className="modernPlus">›</span>
+     </a>})}
+   </section>)}
+  </section>
+ </main>
+}

@@ -552,3 +552,92 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
  .b12HeroNav>img{width:92px;height:92px;object-fit:contain;object-position:left top}
  .b12HeroCopy{left:8.2%;top:32%}
 }
+
+/* Story section: approved reference composition */
+@media(min-width:851px){
+ .b12Story{
+   grid-template-columns:38% 62%;
+   gap:0;
+   padding:2.2% 6.8% 2.5%;
+   align-items:center;
+ }
+ .b12StoryText{
+   padding:0 5.5% 0 6.5%;
+   align-self:center;
+   position:relative;
+   z-index:2;
+ }
+ .b12StoryText>p{
+   font-size:14px;
+   letter-spacing:.14em;
+   margin:0 0 10px;
+ }
+ .b12StoryText h2{
+   font-size:clamp(35px,2.8vw,48px);
+   line-height:1.02;
+   margin:0 0 15px;
+   white-space:nowrap;
+ }
+ .b12StoryText>div{
+   max-width:520px;
+   font-size:12px;
+   line-height:1.62;
+   color:#eee;
+ }
+ .storyCta{
+   display:inline-flex;
+   align-items:center;
+   justify-content:space-between;
+   min-width:150px;
+   gap:28px;
+   margin-top:17px;
+   padding:11px 15px;
+   border:1px solid #d3a640;
+   border-radius:2px;
+   color:#fff;
+   text-decoration:none;
+   font-size:11px;
+   font-weight:700;
+   letter-spacing:.06em;
+ }
+ .storyCta span{color:#e3b44f;font-size:17px}
+ .b12Cards{
+   width:100%;
+   height:min(16.7vw,285px);
+   gap:6px;
+   align-self:center;
+ }
+ .b12Cards figure{
+   position:relative;
+   overflow:hidden;
+   background:#090a0a;
+   min-width:0;
+ }
+ .b12Cards figure img{
+   width:100%;
+   height:100%;
+   object-fit:cover;
+   object-position:center;
+   filter:brightness(.82) saturate(.9);
+ }
+ .b12Cards figure figcaption{
+   position:absolute;
+   left:0;right:0;bottom:0;
+   padding:34px 14px 12px;
+   background:linear-gradient(transparent,rgba(3,3,3,.94) 48%);
+ }
+ .b12Cards figcaption b{
+   display:block;
+   font:500 17px/1.1 Georgia,serif;
+   color:#fff;
+ }
+ .b12Cards figcaption span{
+   display:block;
+   margin-top:5px;
+   font-size:10px;
+   color:#ddd;
+ }
+}
+@media(max-width:850px){
+ .storyCta{display:inline-flex;align-items:center;gap:24px;margin-top:18px;padding:11px 14px;border:1px solid #d3a640;color:#fff;text-decoration:none;font-size:11px}
+}

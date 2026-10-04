@@ -548,3 +548,122 @@ begin
  select id into itm from public.menu_items where name_tr='Talisker 10. Y.O. %45,8' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',430,10,true),(itm,'Duble','Double','Двойной',840,20,true),(itm,'Şişe','Bottle','Бутылка',4620,30,true); end if;
  select id into itm from public.menu_items where name_tr='The Macallan 12 Y.O. Sherry Oak Cask' limit 1; if itm is not null then insert into public.menu_item_variants(item_id,label_tr,label_en,label_ru,price,sort_order,is_active) values(itm,'Tek','Single','Одинарный',1200,10,true),(itm,'Duble','Double','Двойной',1900,20,true),(itm,'Şişe','Bottle','Бутылка',12000,30,true); end if;
 end $$;
+
+
+-- Complete active multilingual menu text for the unified TR / EN / RU menu.
+-- Safe to re-run. Does not change prices, images, ordering or Turkish source text.
+update public.menu_categories set
+ title_en=case slug when 'baslangic' then 'Beginning' when 'anayemek' then 'Main course' when 'soft' then 'Soft drink' when 'tatli' then 'Dessert' when 'alkollu' then 'Alcoholic beverage' when 'viski' then 'Whisky' when 'sarap' then 'Wine' else title_en end,
+ title_ru=case slug when 'baslangic' then 'ХОЛОДНЫЕ ЗАКУСКИ' when 'anayemek' then 'МЯСНОЕ МЕНЮ' when 'soft' then 'БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ' when 'tatli' then 'ДЕСЕРТЫ' when 'alkollu' then 'АЛКОГОЛЬНЫЕ НАПИТКИ' when 'viski' then 'ВИСКИ' when 'sarap' then 'ВИНО' else title_ru end
+where slug in ('baslangic','anayemek','soft','tatli','alkollu','viski','sarap');
+
+update public.menu_sections set
+ title_en=case title_tr
+  when 'Başlangıç' then 'Beginning' when 'Ara Sıcak' then 'Hot Starters' when 'Salata' then 'Salads'
+  when 'Dry Aged Steaks' then 'Dry Aged Steaks' when 'BEFF' then 'BEEF' when 'Köfte' then 'Meatballs'
+  when 'Burger' then 'Burgers' when 'Solo Et' then 'Solo Meat' when 'Soft İçecek' then 'Soft Drinks'
+  when 'Kahve' then 'Coffee' when 'Tatlı' then 'Desserts' when 'Tekila' then 'Tequila'
+  when 'Votka' then 'Vodka' when 'Cin' then 'Gin' when 'LIQUOR & VERMOUTH' then 'LIQUOR & VERMOUTH'
+  when 'Bira' then 'Beer' when 'Rakı' then 'Raki' when 'Scotch Viski' then 'Scotch Whisky'
+  when 'Bourbon Viski' then 'Bourbon Whisky' when 'Tennessee Viski' then 'Tennessee Whisky'
+  when 'İrish Viski' then 'Irish Whisky' when 'Malt Viski' then 'Malt Whisky'
+  when 'Kırmızı' then 'Red Wine' when 'Beyaz' then 'White Wine' when 'Rose' then 'Rosé'
+  when 'İthal' then 'Imported Wines' when 'Köpüklü' then 'Sparkling Wine' else title_en end,
+ title_ru=case title_tr
+  when 'Başlangıç' then 'ХОЛОДНЫЕ ЗАКУСКИ' when 'Ara Sıcak' then 'ГОРЯЧИЕ ЗАКУСКИ' when 'Salata' then 'САЛАТЫ'
+  when 'Dry Aged Steaks' then 'СТЕЙКИ СУХОЙ ВЫДЕРЖКИ' when 'BEFF' then 'ГОВЯДИНА' when 'Köfte' then 'КЁФТЕ'
+  when 'Burger' then 'БУРГЕРЫ' when 'Solo Et' then 'МЯСНЫЕ НАБОРЫ' when 'Soft İçecek' then 'БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ'
+  when 'Kahve' then 'КОФЕ' when 'Tatlı' then 'ДЕСЕРТЫ' when 'Tekila' then 'ТЕКИЛА'
+  when 'Votka' then 'ВОДКА' when 'Cin' then 'ДЖИН' when 'LIQUOR & VERMOUTH' then 'ЛИКЕРЫ И ВЕРМУТ'
+  when 'Bira' then 'ПИВО' when 'Rakı' then 'РАКЫ' when 'Scotch Viski' then 'ШОТЛАНДСКИЙ ВИСКИ'
+  when 'Bourbon Viski' then 'БУРБОН' when 'Tennessee Viski' then 'ТЕННЕССИЙСКИЙ ВИСКИ'
+  when 'İrish Viski' then 'ИРЛАНДСКИЙ ВИСКИ' when 'Malt Viski' then 'СОЛОДОВЫЙ ВИСКИ'
+  when 'Kırmızı' then 'КРАСНОЕ ВИНО' when 'Beyaz' then 'БЕЛОЕ ВИНО' when 'Rose' then 'РОЗОВОЕ ВИНО'
+  when 'İthal' then 'ИМПОРТНЫЕ ВИНА' when 'Köpüklü' then 'ИГРИСТОЕ ВИНО' else title_ru end;
+
+-- Food / soft drink / dessert names and descriptions.
+update public.menu_items set name_en='Cheese Plate',name_ru='СЫРНАЯ ТАРЕЛКА',
+ description_en='Served with Edam, Parmesan, smoked Circassian cheese, Gouda and Emmental. (1300–1600 calories)',
+ description_ru='Сыры Эдам, Пармезан, копченый черкесский сыр, Гауда и Эмменталь. (1300–1600 калорий)' where name_tr='Peynir Tabağı';
+update public.menu_items set name_en='Deli Platter',name_ru='ДЕЛИКАТЕСНАЯ ТАРЕЛКА',
+ description_en='Served with Edam, Parmesan, Ezine, smoked Circassian cheese, veal cotto, smoked beef, roast beef and dried meat. (775–830 calories)',
+ description_ru='Эдам, Пармезан, Эзине, копченый черкесский сыр, телятина котто, копченая говядина, ростбиф и вяленое мясо. (775–830 калорий)' where name_tr='Şarküteri Tabağı';
+update public.menu_items set name_en='Veal Carpaccio',name_ru='КАРПАЧЧО ИЗ ГОВЯДИНЫ',
+ description_en='Thin fillet slices marinated with Dijon mustard and fresh herbs, served with Parmesan and balsamic sauce. (150–240 calories)',
+ description_ru='Тонкие ломтики филе, маринованные с дижонской горчицей и свежими специями, подаются с пармезаном и бальзамическим соусом. (150–240 калорий)' where name_tr='Dana Carpaccio';
+update public.menu_items set name_en='Steak Tartare',name_ru='СТЕЙК ТАРТАР',
+ description_en='Served with capers, red onion, pickles, Tabasco, Dijon mustard, egg yolk and toast. (153–285 calories)',
+ description_ru='Каперсы, красный лук, соленья, соус Табаско, дижонская горчица, яичный желток и тост. (153–285 калорий)' where name_tr='Steak Tartar';
+update public.menu_items set name_en='CHEDDAR SMOKED',name_ru='ЧЕДДЕР С КОПЧЕНОСТЯМИ',
+ description_en='Served with smoked beef, cheddar sauce and toasted bread. (536–558 calories)',
+ description_ru='Копченая говядина с соусом чеддер и обжаренным хлебом. (536–558 калорий)' where name_tr='CHEDDAR FÜME';
+update public.menu_items set name_en='SPAGHETTI 200 Gr',name_ru='СПАГЕТТИ 200 гр.',
+ description_en='Strip-cut fillet slices cooked in butter and served. (530–582 calories)',
+ description_ru='Нарезанные полосками ломтики филе, приготовленные на сливочном масле. (530–582 калории)' where name_tr='SPAGETTİ 200 Gr';
+
+update public.menu_items set name_en='Tomato Salad',name_ru='САЛАТ ИЗ ПОМИДОРОВ',
+ description_en='Cherry tomatoes, red onion, black olives and salad dressing. (470–500 calories)',
+ description_ru='Помидоры черри, красный лук, черные оливки и салатная заправка. (470–500 калорий)' where name_tr='Domates Salatası';
+update public.menu_items set name_en='Rocket Salad',name_ru='САЛАТ С РУККОЛОЙ',
+ description_en='Rocket, Parmesan cheese and salad dressing. (330–368 calories)',
+ description_ru='Руккола, сыр пармезан и салатная заправка. (330–368 калорий)' where name_tr='Roka Salatası';
+update public.menu_items set name_en='Mediterranean Salad',name_ru='СРЕДИЗЕМНОМОРСКИЙ САЛАТ',
+ description_en='Seasonal greens, avocado, cherry tomatoes and salad dressing. (473–513 calories)',
+ description_ru='Сезонная зелень, авокадо, помидоры черри и салатная заправка. (473–513 калорий)' where name_tr='Akdeniz Salatası';
+update public.menu_items set name_en='Tulum Cheese Salad',name_ru='САЛАТ С СЫРОМ ТУЛУМ',
+ description_en='Seasonal greens, cherry tomatoes, Tulum cheese, walnuts, raisins, dried apricots, pomegranate and salad dressing. (430–450 calories)',
+ description_ru='Сезонная зелень, помидоры черри, сыр тулум, грецкие орехи, изюм, курага, гранат и салатная заправка. (430–450 калорий)' where name_tr='Tulum Salatası';
+update public.menu_items set name_en='Steak Salad',name_ru='СТЕЙК-САЛАТ',
+ description_en='Fillet slices, seasonal greens, cherry tomatoes and salad dressing. (441–481 calories)',
+ description_ru='Ломтики филе, сезонная зелень, помидоры черри и салатная заправка. (441–481 калорий)' where name_tr='Steak Salata';
+
+update public.menu_items set name_en=name_tr,name_ru=name_tr,
+ description_en=replace(replace(description_tr,'brokoli','broccoli'),'karnabahar','cauliflower')
+ where name_tr in ('Dallas','T-Bone','New-York','Ribeye') and description_tr is not null;
+update public.menu_items set name_en='Block Fillet',name_ru='ТАКОЗ БОНФИЛЕ' where name_tr='Takoz Bonfile';
+update public.menu_items set name_en='Fillet Lokum',name_ru='БОНФИЛЕ ЛОКУМ' where name_tr='Bonfile Lokum';
+update public.menu_items set name_en='Shashlik',name_ru='ШАШЛЫК' where name_tr='Şaşlık';
+update public.menu_items set name_en='Sliced Ribeye',name_ru='ТОНКИЙ АНТРЕКОТ' where name_tr='Yaprak Antrikot';
+update public.menu_items set name_en='Lamb Chops',name_ru='БАРАНЬИ ОТБИВНЫЕ' where name_tr='Kuzu Pirzola';
+update public.menu_items set name_en='Demi-Glace Fillet',name_ru='БОНФИЛЕ ДЕМИ-ГЛАС' where name_tr='Demi Glace Bonfile';
+update public.menu_items set name_en='Lamb Tenderloin',name_ru='БАРАНЬЯ ВЫРЕЗКА' where name_tr='Kuzu Küşleme';
+update public.menu_items set name_en='Lamb Loin (Karski)',name_ru='КАРЕ ЯГНЕНКА (КАРСКИ)' where name_tr='Kuzu Sırt (Karski)';
+update public.menu_items set name_en='Lamb Rack',name_ru='КАРЕ ЯГНЕНКА' where name_tr='Kuzu Kafes';
+update public.menu_items set name_en='Sliced Asado',name_ru='АСАДО ЛОМТИКАМИ' where name_tr='Dilim Asado';
+update public.menu_items set name_en='File Château Beef for 4',name_ru='ФИЛЕ ШАТО НА 4 ПЕРСОНЫ' where name_tr='File Şato Beef 4 kişilik';
+update public.menu_items set name_en='File Château Beef for 2',name_ru='ФИЛЕ ШАТО НА 2 ПЕРСОНЫ' where name_tr='File Şato Beef 2 kişilik';
+
+update public.menu_items set name_en='Butcher Meatballs',name_ru='МЯСНЫЕ КОТЛЕТЫ',description_en='Served with French fries.',description_ru='Подается с картофелем фри.' where name_tr='Kasap Köfte';
+update public.menu_items set name_en='Cheddar Meatballs',name_ru='КОТЛЕТЫ С ЧЕДДЕРОМ',description_en='Served with French fries.',description_ru='Подается с картофелем фри.' where name_tr='Cheddar Köfte';
+update public.menu_items set name_en='Cheese Burger',name_ru='ЧИЗБУРГЕР' where name_tr='Cheese Burger';
+update public.menu_items set name_en='Mexican Burger',name_ru='МЕКСИКАНСКИЙ БУРГЕР' where name_tr='Mexican Burger';
+update public.menu_items set name_en='Lokum Burger',name_ru='БУРГЕР ЛОКУМ' where name_tr='Lokum Burger';
+update public.menu_items set name_en='Bacon Cheese Burger',name_ru='БУРГЕР С БЕКОНОМ И ЧЕДДЕРОМ' where name_tr='Bacon Cheese Burger';
+update public.menu_items set name_en='Solo 1',name_ru='СОЛО 1' where name_tr='Solo 1';
+update public.menu_items set name_en='Solo 2',name_ru='СОЛО 2' where name_tr='Solo 2';
+
+update public.menu_items set name_en='Water',name_ru='ВОДА',description_en='Water 0.75 L',description_ru='Вода 0,75 л' where name_tr='SU';
+update public.menu_items set name_en='S.Pellegrino',name_ru='S.PELLEGRINO' where name_tr='S.Pellegrino';
+update public.menu_items set name_en='Mineral Water',name_ru='МИНЕРАЛЬНАЯ ВОДА' where name_tr='Soda';
+update public.menu_items set name_en='Turnip Juice 330 ml',name_ru='ШАЛГАМ 330 МЛ' where name_tr='Şalgam Suyu 330 ml';
+update public.menu_items set name_en='Ayran',name_ru='АЙРАН' where name_tr='Ayran';
+update public.menu_items set name_en='Sprite',name_ru='SPRITE' where name_tr='Sprite';
+update public.menu_items set name_en='COCA COLA',name_ru='COCA COLA' where name_tr='COCA COLA';
+update public.menu_items set name_en='Fanta',name_ru='FANTA' where name_tr='Fanta';
+update public.menu_items set name_en='Cappy Fruit Juice',name_ru='СОК CAPPY' where name_tr='Cappy Meyve Suyu';
+update public.menu_items set name_en='FUSE TEA',name_ru='FUSE TEA' where name_tr='FUSE TEA';
+update public.menu_items set name_en='Red Bull',name_ru='RED BULL' where name_tr='Redbull';
+update public.menu_items set name_en='Fresh Orange Juice',name_ru='СВЕЖЕВЫЖАТЫЙ АПЕЛЬСИНОВЫЙ СОК' where name_tr='Taze Portakal Suyu';
+update public.menu_items set name_en='Uludağ Mineral Water',name_ru='МИНЕРАЛЬНАЯ ВОДА ULUDAĞ' where name_tr='Uludağ Soda';
+update public.menu_items set name_en='Tiramisu',name_ru='ТИРАМИСУ' where name_tr='Tiramisu';
+update public.menu_items set name_en='Katmer',name_ru='КАТМЕР',description_en='For 4 people',description_ru='На 4 персоны' where name_tr='Katmer';
+
+-- Fill any still-empty translated labels for brand/product names so switching language never renders a blank field.
+update public.menu_items set name_en=name_tr where nullif(btrim(name_en),'') is null;
+update public.menu_items set name_ru=name_tr where nullif(btrim(name_ru),'') is null;
+update public.menu_sections set title_en=title_tr where nullif(btrim(title_en),'') is null;
+update public.menu_sections set title_ru=title_tr where nullif(btrim(title_ru),'') is null;
+update public.menu_categories set title_en=title_tr where nullif(btrim(title_en),'') is null;
+update public.menu_categories set title_ru=title_tr where nullif(btrim(title_ru),'') is null;
+update public.menu_item_variants set label_en=label_tr where nullif(btrim(label_en),'') is null;
+update public.menu_item_variants set label_ru=label_tr where nullif(btrim(label_ru),'') is null;

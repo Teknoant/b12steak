@@ -191,3 +191,19 @@ body{background:#fff}
  .menuImageLightbox>img,.menuImageLightbox .menuLightboxImage{max-width:96vw;max-height:84vh}
 }
 @media(max-width:390px){.menuImageButton{width:82px;height:82px}}
+
+/* Wix-style menu language/location selector */
+.menuTop{position:relative}
+.menuLanguage{width:260px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #777;padding:0 0 8px;margin:0 0 22px;color:#fff}
+.menuLanguagePin{font-size:17px;line-height:1}
+.menuLanguage select{width:100%;appearance:auto;border:0;outline:0;background:#0b0b0b;color:#fff;font:inherit;font-size:12px;cursor:pointer;padding:5px 2px}
+@media(min-width:701px){
+ .menuTop{display:grid;grid-template-columns:260px minmax(0,1fr);column-gap:34px;align-items:end}
+ .menuTop>h1{display:none}
+ .menuTop .menuLanguage{grid-column:1;margin:0}
+ .menuTop .menuTabs{grid-column:2;justify-content:flex-start;margin:0}
+}
+@media(max-width:700px){
+ .menuLanguage{width:100%;margin:0 0 18px}
+ .menuLanguage select{font-size:13px}
+}

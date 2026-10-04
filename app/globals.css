@@ -378,3 +378,10 @@ body:has(.b12Landing)>footer{background:#050505;color:#777;border:0}
 
 /* Homepage: hide only the marked top navigation/logo */
 body:has(.b12Landing) .siteHeader{display:none}
+
+/* Homepage is intentionally a single supplied artwork */
+body:has(.homePoster){margin:0;background:#080706;overflow-x:hidden}
+body:has(.homePoster) .siteHeader,body:has(.homePoster)>footer{display:none!important}
+.homePoster{width:100%;min-height:100vh;margin:0;padding:0;background:#080706;display:flex;align-items:flex-start;justify-content:center}
+.homePoster img{display:block;width:100%;height:auto;max-width:none;margin:0}
+@media(min-aspect-ratio:1523/1032){.homePoster{min-height:100vh;align-items:center}.homePoster img{width:100%;min-height:100vh;object-fit:cover}}

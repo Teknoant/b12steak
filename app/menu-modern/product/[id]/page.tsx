@@ -1,4 +1,3 @@
-import MenuImage from "../../../menu-image";
 import {createServerSupabase} from "../../../../lib/supabase/server";
 export const dynamic="force-dynamic";
 type Cat={id:number;slug:string;title_tr:string};type Sec={id:number;category_id:number;title_tr:string};type Item={id:number;section_id:number;name_tr:string;description_tr:string|null;price:number;tags:string[];image_path:string|null};type Variant={id:number;item_id:number;label_tr:string;price:number;sort_order:number};
@@ -158,7 +157,7 @@ export default async function ModernProduct({params}:{params:Promise<{id:string}
  const i=item as Item;const vs=(variants||[]) as Variant[];const sec=((section||[]) as Sec[]).find(s=>s.id===i.section_id);
  return <main className="modernMenu modernProduct">
   <section className="modernProductHero">
-   {itemImage(i)&&<MenuImage src={itemImage(i)!} alt={i.name_tr}/>}
+   {itemImage(i)&&<img className="modernProductArtwork" src={itemImage(i)!} alt={i.name_tr}/>}
    <a className="modernBack" href="/menu-modern">←</a>
    <span className="modernHeart">♡</span>
   </section>

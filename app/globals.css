@@ -720,3 +720,8 @@ body:has(.b12Home) .siteHeader,body:has(.b12Home)>footer{display:none!important}
    color:#e1ded8;
  }
 }
+
+/* Professional promise-band icons */
+.b12Icon{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;color:#dda82f}
+.b12Icon svg{width:30px;height:30px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:850px){.b12Icon{width:30px;height:30px;flex-basis:30px}.b12Icon svg{width:27px;height:27px}}

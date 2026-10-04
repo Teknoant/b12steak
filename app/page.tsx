@@ -1,1 +1,1 @@
-export default function Home(){return <main className="homePoster"><img src="/images/site/b12-homepage.webp" alt="B12 Steak"/></main>}
+export default function Home(){return <main className="homePoster"><img src="/images/site/B12-homepage.webp" alt="B12 Steak"/></main>}

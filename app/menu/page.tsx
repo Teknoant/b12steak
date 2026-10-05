@@ -53,7 +53,7 @@ const localImage=(name:string)=>{
   
   
   
-  "s.pellegrino":"/images/menu/soft/St.Pellegrino.webp","su":"/images/menu/soft/su.jpg","şalgam suyu 330 ml":"/images/menu/soft/şalgam.jpg","ayran":"/images/menu/soft/ayran.jpg","sprite":"/images/menu/soft/sprite.jpg","coca cola":"/images/menu/soft/cola.jpg","fanta":"/images/menu/soft/fanta.jpg","cappy meyve suyu":"/images/menu/soft/cappy.jpg","fuse tea":"/images/menu/soft/fusetea.jpg","redbull":"/images/menu/soft/redbull.jpg","taze portakal suyu":"/images/menu/soft/portakal.jpg",
+  "s.pellegrino":"/images/menu/soft/St.Pellegrino.webp","su":"/images/menu/soft/su.webp","şalgam suyu 330 ml":"/images/menu/soft/şalgam.webp","ayran":"/images/menu/soft/ayran.webp","sprite":"/images/menu/soft/sprite.webp","coca cola":"/images/menu/soft/cola.webp","fanta":"/images/menu/soft/fanta.webp","cappy meyve suyu":"/images/menu/soft/cappy.webp","fuse tea":"/images/menu/soft/fusetea.webp","redbull":"/images/menu/soft/redbull.webp","taze portakal suyu":"/images/menu/soft/portakal.webp",
   "soda":"/images/menu/soft/Soda.webp",
   "uludağ soda":"/images/menu/soft/uludag.webp",
   "tiramisu":"/images/menu/tatli/Tiramisu-edited.webp",

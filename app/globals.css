@@ -889,3 +889,44 @@ body:has(.modernMenu) .siteHeader,body:has(.modernMenu)>footer{display:none!impo
 @media(max-width:560px){
   .modernProduct .modernProductHero{height:auto!important;aspect-ratio:auto!important;min-height:240px}
 }
+
+
+/* Product detail artwork: fixed display stage, full image always visible */
+.modernProduct .modernProductHero{
+  position:relative!important;
+  width:100%!important;
+  height:520px!important;
+  min-height:520px!important;
+  aspect-ratio:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  background:#f2f2f0!important;
+}
+.modernProduct .modernProductArtwork,
+.modernProduct .modernProductHero>img{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  margin:0!important;
+  transform:none!important;
+}
+@media(max-width:560px){
+  .modernProduct .modernProductHero{
+    height:70vh!important;
+    min-height:430px!important;
+    max-height:650px!important;
+  }
+  .modernProduct .modernProductArtwork,
+  .modernProduct .modernProductHero>img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+}

@@ -862,3 +862,30 @@ body:has(.modernMenu) .siteHeader,body:has(.modernMenu)>footer{display:none!impo
 .modernDrawer a{display:block;padding:16px 4px;border-bottom:1px solid #282a2a;color:#fff;text-decoration:none;font-size:16px}.modernDrawer a:hover{color:#e7b95e}
 .modernDrawerClose{position:absolute;right:18px;top:20px;border:0;background:none;color:#fff;font-size:34px}
 .modernDrawerBackdrop{position:fixed;z-index:70;inset:0;border:0;background:rgba(0,0,0,.58)}
+
+
+/* Modern product detail: always show the complete product image without cropping */
+.modernProduct .modernProductHero{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  min-height:280px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#f2f2f0;
+}
+.modernProduct .modernProductArtwork{
+  position:relative!important;
+  inset:auto!important;
+  display:block;
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+}
+@media(max-width:560px){
+  .modernProduct .modernProductHero{height:auto!important;aspect-ratio:auto!important;min-height:240px}
+}

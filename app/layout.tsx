@@ -1,5 +1,6 @@
 import "./globals.css";
 import SiteHeader from "./site-header";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata={
  title:"B12 Steak",
@@ -15,5 +16,5 @@ export const metadata={
 };
 
 export default function RootLayout({children}:{children:React.ReactNode}){
- return <html lang="tr"><body><SiteHeader/>{children}<footer><span>B12 Steak</span><span>©2022, B12 Steak. Teknoant.com ile kurulmuştur.</span></footer></body></html>;
+ return <html lang="tr"><body><SiteHeader/>{children}<Analytics/><footer><span>B12 Steak</span><span>©2022, B12 Steak. Teknoant.com ile kurulmuştur.</span></footer></body></html>;
 }
